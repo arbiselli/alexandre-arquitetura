@@ -1,0 +1,37 @@
+@font-face {
+   font-family: 'Executive';
+   src: url('/fonts/Executive.ttf') format('ttf');
+   font-weight: normal;
+   font-style: normal;
+   font-display: swap;
+ }
+
+@font-face {
+   font-family: 'Arima-Thin';
+   src: url('/fonts/Arima-Thin.ttf') format('ttf');
+ }
+
+@font-face {
+   font-family: 'Arima-SemiBold';
+   src: url('/fonts/Arima-SemiBold.ttf') format('ttf');
+ }
+@font-face {
+   font-family: 'Arima-Regular';
+   src: url('/fonts/Arima-Regular.ttf') format('ttf');
+ }
+@font-face {
+   font-family: 'Arima-Medium';
+   src: url('/fonts/Arima-Medium.ttf') format('ttf');
+ }
+@font-face {
+   font-family: 'Arima-Light';
+   src: url('/fonts/Arima-Light.ttf') format('ttf');
+ }
+@font-face {
+   font-family: 'Arima-ExtraLight';
+   src: url('/fonts/Arima-ExtraLight.ttf') format('ttf');
+ }
+@font-face {
+   font-family: 'Arima-Bold';
+   src: url('/fonts/Arima-Bold.ttf') format('ttf');
+ }
