@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useColor } from "../contexts/ColorContext";
 import styles from "./Navbar.module.css";
@@ -50,7 +50,6 @@ const navItems: NavItem[] = [
 ];
 
 const Navbar: React.FC = () => {
-  const pathname = usePathname();
   const [activeItem, setActiveItem] = useState<string>("Morphosis");
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
   const [activeSubItem, setActiveSubItem] = useState<string | null>(null);
@@ -124,16 +123,20 @@ const Navbar: React.FC = () => {
               className={`${clickedItem === item.name ? styles.active : ""} ${
                 styles.parentItem
               }`}
-              style={{
-                ...textStyle,
-                "--underline-height": clickedItem === item.name ? "3px" : "0px",
-              }}
+              style={
+                {
+                  ...textStyle,
+                  "--underline-height":
+                    clickedItem === item.name ? "3px" : "0px",
+                } as React.CSSProperties
+              }
             >
               {item.name}
             </Link>
+
             {expandedItem === item.name && (
               <div className={styles.subItems}>
-                {item.subitems.map((subitem, index) => (
+                {item.subitems.map((subitem) => (
                   <span key={subitem.name}>
                     <Link
                       href={subitem.href}
