@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import { useColor } from "../contexts/ColorContext";
 import styles from "./BackgroundVideo.module.css";
 
 const videos = [
@@ -19,6 +20,13 @@ const BackgroundVideo: React.FC = () => {
   const [nextVideoIndex, setNextVideoIndex] = useState(1);
   const currentVideoRef = useRef<HTMLVideoElement>(null);
   const nextVideoRef = useRef<HTMLVideoElement>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const { showVideo } = useColor();
+
+  useEffect(() => {
+    // Set loading to false after component mounts
+    setIsLoading(false);
+  }, []);
 
   useEffect(() => {
     const currentVideo = currentVideoRef.current;
@@ -47,10 +55,24 @@ const BackgroundVideo: React.FC = () => {
     nextVideo.src = videos[nextVideoIndex];
     nextVideo.load();
 
+    if (!showVideo) {
+      currentVideo.pause();
+      nextVideo.pause();
+    } else {
+      currentVideo.play().catch((error) => {
+        console.log("Video playback failed:", error);
+      });
+    }
+
     return () => {
       currentVideo.removeEventListener("ended", handleVideoEnd);
     };
-  }, [currentVideoIndex, nextVideoIndex]);
+  }, [currentVideoIndex, nextVideoIndex, showVideo]);
+
+  // Return white background immediately if loading or showVideo is false
+  if (isLoading || !showVideo) {
+    return <div className={styles.whiteBackground} />;
+  }
 
   return (
     <div className={styles.videoContainer}>

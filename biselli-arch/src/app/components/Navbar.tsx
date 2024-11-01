@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useColor } from "../contexts/ColorContext";
 import styles from "./Navbar.module.css";
@@ -15,7 +15,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   {
     name: "Morphosis",
-    href: "/",
+    href: "/about",
     subitems: [
       { name: "Contact,", href: "/contact" },
       { name: "People,", href: "/people" },
@@ -38,15 +38,6 @@ const navItems: NavItem[] = [
       { name: "Year,", href: "/planning/year" },
     ],
   },
-  {
-    name: "Contact",
-    href: "/contact",
-    subitems: [
-      { name: "Email,", href: "/email" },
-      { name: "Phone,", href: "/phone" },
-      { name: "Location", href: "/location" },
-    ],
-  },
 ];
 
 const Navbar: React.FC = () => {
@@ -56,43 +47,84 @@ const Navbar: React.FC = () => {
   const [isParentActive, setIsParentActive] = useState(true);
   const [clickedItem, setClickedItem] = useState<string | null>(null);
   const router = useRouter();
-  const { textColor, setTextColor } = useColor();
+  const pathname = usePathname();
+  const { textColor, setTextColor, setShowVideo } = useColor();
+  const [isLoading, setIsLoading] = useState(true);
+
+  console.log(isParentActive);
 
   useEffect(() => {
     setTextColor("white");
   }, []);
 
-  const handleItemClick = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    itemName: string,
-    href: string
-  ) => {
-    e.preventDefault();
-    setActiveItem(itemName);
-    setExpandedItem(itemName); // Always set the expanded item, never collapse
+  useEffect(() => {
+    for (const item of navItems) {
+      // Check if it's a subitem
+      const matchingSubItem = item.subitems.find(
+        (subitem) => subitem.href === pathname
+      );
+
+      if (matchingSubItem) {
+        setActiveItem(item.name);
+        setExpandedItem(item.name);
+        setActiveSubItem(matchingSubItem.name);
+        setIsParentActive(false);
+        setClickedItem(item.name);
+        setTextColor("black");
+        setShowVideo(false);
+        return;
+      }
+
+      // Check if it's a parent item
+      if (item.href === pathname) {
+        setActiveItem(item.name);
+        setExpandedItem(item.name);
+        setActiveSubItem(null);
+        setIsParentActive(true);
+        setClickedItem(item.name);
+        setTextColor("white");
+        setShowVideo(true);
+        return;
+      }
+    }
+  }, [pathname]);
+
+  useEffect(() => {
+    setTextColor("white");
+    setShowVideo(isParentActive);
+    setIsLoading(false);
+  }, []);
+
+  const handleItemClick = (name: string, href: string) => {
+    setActiveItem(name);
+    setExpandedItem(name);
     setActiveSubItem(null);
     setIsParentActive(true);
+    setClickedItem(name);
     setTextColor("white");
-    setClickedItem(itemName);
+    setShowVideo(true);
     router.push(href);
   };
 
   const handleSubItemClick = (
-    e: React.MouseEvent<HTMLAnchorElement>,
+    parentName: string,
     subItemName: string,
     href: string
   ) => {
-    e.preventDefault();
+    setActiveItem(parentName);
+    setExpandedItem(parentName);
     setActiveSubItem(subItemName);
     setIsParentActive(false);
+    setClickedItem(parentName);
     setTextColor("black");
+    setShowVideo(false);
     router.push(href);
   };
 
   const textStyle = isParentActive
     ? ({
         color: textColor,
-        backgroundColor: "rgba(0, 0, 0, 0.7)",
+        backgroundColor: "rgba(0, 0, 0, 0.1)",
         borderRadius: "3px",
         transition: "background-color 0.3s ease, color 0.3s ease",
         "--underline-color": "white",
@@ -107,8 +139,12 @@ const Navbar: React.FC = () => {
         "--underline-height": "3px",
       } as React.CSSProperties);
 
+  if (isLoading) {
+    return null;
+  }
+
   return (
-    <nav className={styles.navbar}>
+    <nav className={`${styles.navbar} ${styles.visible}`}>
       <ul className={styles.navList}>
         {navItems.map((item) => (
           <li
@@ -119,17 +155,11 @@ const Navbar: React.FC = () => {
           >
             <Link
               href={item.href}
-              onClick={(e) => handleItemClick(e, item.name, item.href)}
+              onClick={(e) => handleItemClick(item.name, item.href)}
               className={`${clickedItem === item.name ? styles.active : ""} ${
                 styles.parentItem
               }`}
-              style={
-                {
-                  ...textStyle,
-                  "--underline-height":
-                    clickedItem === item.name ? "3px" : "0px",
-                } as React.CSSProperties
-              }
+              style={textStyle}
             >
               {item.name}
             </Link>
@@ -141,7 +171,11 @@ const Navbar: React.FC = () => {
                     <Link
                       href={subitem.href}
                       onClick={(e) =>
-                        handleSubItemClick(e, subitem.name, subitem.href)
+                        handleSubItemClick(
+                          item.name,
+                          subitem.name,
+                          subitem.href
+                        )
                       }
                       className={
                         activeSubItem === subitem.name ? styles.active : ""

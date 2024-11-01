@@ -1,0 +1,28 @@
+.card {
+  position: relative;
+  width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%; /* Creates a square aspect ratio */
+  overflow: hidden;
+}
+
+.name {
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.role {
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+  color: #666;
+} 
