@@ -155,7 +155,7 @@ const Navbar: React.FC = () => {
           >
             <Link
               href={item.href}
-              onClick={(e) => handleItemClick(item.name, item.href)}
+              onClick={() => handleItemClick(item.name, item.href)}
               className={`${clickedItem === item.name ? styles.active : ""} ${
                 styles.parentItem
               }`}
@@ -170,7 +170,7 @@ const Navbar: React.FC = () => {
                   <span key={subitem.name}>
                     <Link
                       href={subitem.href}
-                      onClick={(e) =>
+                      onClick={() =>
                         handleSubItemClick(
                           item.name,
                           subitem.name,
