@@ -1,5 +1,5 @@
 .navbar {
-   position: absolute;
+   position: fixed;
    top: 20px;
    left: 20px;
    padding: 20px;
@@ -8,7 +8,7 @@
    font-family: Arial, Helvetica, sans-serif;
    color: inherit;
    opacity: 1;
-   transition: opacity 0.1s;
+   /* transition: opacity 0.8s ease; */
  }
  
  .navList {
@@ -18,7 +18,6 @@
  }
  
  .navItem {
-   margin-bottom: 10px;
    position: relative;
  }
  
@@ -39,7 +38,7 @@
    left: 0;
    background-color: currentColor;
    visibility: hidden;
-   transform: scaleX(0);
+   /* transform: scaleX(0); */
  }
  
  .navItem > a:hover::after,
@@ -47,7 +46,7 @@
  .navItem > a.active::after,
  .subItems a.active::after {
    visibility: visible;
-   transform: scaleX(1);
+   /* transform: scaleX(1); */
  }
  
  .parentItem::after {
@@ -60,9 +59,10 @@
  
  .subItems {
    max-height: none;
-   overflow: hidden;
+   overflow: visible;
    white-space: nowrap;
    font-size: 2rem;
+   position: relative;
  }
  
  .navItem.active .subItems {
@@ -72,11 +72,12 @@
  .subItems span {
    display: inline-block;
    margin-right: 10px;
+   position: relative;
  }
  
  .subItems a {
    border-radius: 3px;
-   transition: background-color 0.3s ease, color 0.3s ease;
+   /* transition: background-color 0.3s ease, color 0.3s ease; */
  }
  
  .comma {
@@ -85,9 +86,40 @@
  
  .visible {
    opacity: 1;
+   pointer-events: auto;
  }
  
  .hidden {
    opacity: 0;
    pointer-events: none;
+ }
+ 
+ .nestedItems {
+   display: flex;
+   flex-direction: column;
+   position: relative;
+   font-size: 1rem;
+   left: calc(13.5ch + 10px);
+   margin-top: 5px;
+ }
+ 
+ .nestedItems a::after {
+   content: '';
+   position: absolute;
+   width: 100%;
+   height: var(--underline-height, 1px);
+   bottom: -0.1px;
+   left: 0;
+   background-color: currentColor;
+   visibility: hidden;
+ }
+ 
+ .nestedItems a {
+   display: inline-block;
+   width: fit-content;
+ }
+ 
+ .nestedItems a:hover::after,
+ .nestedItems a.active::after {
+   visibility: visible;
  }

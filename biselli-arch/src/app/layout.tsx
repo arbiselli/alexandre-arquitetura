@@ -1,6 +1,7 @@
 import BackgroundVideo from "./components/BackgroundVideo";
 import LoadingBar from "./components/LoadingBar";
 import Navbar from "./components/Navbar";
+import RouteBackground from "./components/RouteBackground";
 import { ColorProvider } from "./contexts/ColorContext";
 import "./fonts/fonts.css";
 import "./globals.css";
@@ -22,6 +23,7 @@ export default function RootLayout({
         <body>
           <LoadingBar />
           <BackgroundVideo />
+          <RouteBackground />
           <Navbar />
           <main className={styles.main}>{children}</main>
         </body>

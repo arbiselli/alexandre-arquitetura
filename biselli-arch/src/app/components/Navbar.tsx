@@ -2,14 +2,20 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useColor } from "../contexts/ColorContext";
 import styles from "./Navbar.module.css";
+
+interface SubItem {
+  name: string;
+  href: string;
+  nestedItems?: { name: string; href: string }[];
+}
 
 interface NavItem {
   name: string;
   href: string;
-  subitems: { name: string; href: string }[];
+  subitems: SubItem[];
 }
 
 const navItems: NavItem[] = [
@@ -18,7 +24,14 @@ const navItems: NavItem[] = [
     href: "/about",
     subitems: [
       { name: "Contact,", href: "/contact" },
-      { name: "People,", href: "/people" },
+      {
+        name: "People,",
+        href: "/people",
+        nestedItems: [
+          { name: "Partners", href: "/people?q=partners" },
+          { name: "Leadership", href: "/people?q=leadership" },
+        ],
+      },
       { name: "Media", href: "/media" },
     ],
   },
@@ -50,6 +63,9 @@ const Navbar: React.FC = () => {
   const pathname = usePathname();
   const { textColor, setTextColor, setShowVideo } = useColor();
   const [isLoading, setIsLoading] = useState(true);
+  const [isVisible, setIsVisible] = useState(true);
+  let timeoutId: NodeJS.Timeout;
+  const [activeNestedItem] = useState<string | null>(null);
 
   console.log(isParentActive);
 
@@ -126,7 +142,7 @@ const Navbar: React.FC = () => {
         color: textColor,
         backgroundColor: "rgba(0, 0, 0, 0.1)",
         borderRadius: "3px",
-        transition: "background-color 0.3s ease, color 0.3s ease",
+        // transition: "background-color 0.3s ease, color 0.3s ease",
         "--underline-color": "white",
         "--underline-height": "3px",
       } as React.CSSProperties)
@@ -134,17 +150,54 @@ const Navbar: React.FC = () => {
         color: textColor,
         backgroundColor: "transparent",
         borderRadius: "3px",
-        transition: "background-color 0.3s ease, color 0.3s ease",
+        // transition: "background-color 0.3s ease, color 0.3s ease",
         "--underline-color": "black",
         "--underline-height": "3px",
       } as React.CSSProperties);
+
+  const handleUserActivity = useCallback(() => {
+    setIsVisible(true);
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      setIsVisible(false);
+    }, 103500); // 5 seconds
+  }, []);
+
+  useEffect(() => {
+    // Initial timeout
+    handleUserActivity();
+
+    // Add event listeners for user activity
+    const events = [
+      "mousedown",
+      "mousemove",
+      "keypress",
+      "scroll",
+      "touchstart",
+    ];
+    events.forEach((event) => {
+      document.addEventListener(event, handleUserActivity);
+    });
+
+    // Cleanup
+    return () => {
+      clearTimeout(timeoutId);
+      events.forEach((event) => {
+        document.removeEventListener(event, handleUserActivity);
+      });
+    };
+  }, [handleUserActivity]);
 
   if (isLoading) {
     return null;
   }
 
   return (
-    <nav className={`${styles.navbar} ${styles.visible}`}>
+    <nav
+      className={`${styles.navbar} ${
+        isVisible ? styles.visible : styles.hidden
+      }`}
+    >
       <ul className={styles.navList}>
         {navItems.map((item) => (
           <li
@@ -166,6 +219,7 @@ const Navbar: React.FC = () => {
 
             {expandedItem === item.name && (
               <div className={styles.subItems}>
+                {/* First render all main subitems */}
                 {item.subitems.map((subitem) => (
                   <span key={subitem.name}>
                     <Link
@@ -194,6 +248,40 @@ const Navbar: React.FC = () => {
                     </Link>
                   </span>
                 ))}
+
+                {/* Then render nested items if their parent is active */}
+                {item.subitems.map(
+                  (subitem) =>
+                    subitem.nestedItems &&
+                    activeSubItem === subitem.name && (
+                      <div
+                        key={`nested-${subitem.name}`}
+                        className={styles.nestedItems}
+                      >
+                        {subitem.nestedItems.map((nestedItem) => (
+                          <Link
+                            key={nestedItem.name}
+                            href={nestedItem.href}
+                            onClick={() => router.push(nestedItem.href)}
+                            className={
+                              activeNestedItem === nestedItem.name
+                                ? styles.active
+                                : ""
+                            }
+                            style={
+                              {
+                                color: "black",
+                                "--underline-color": "black",
+                                "--underline-height": "1px",
+                              } as React.CSSProperties
+                            }
+                          >
+                            {nestedItem.name}
+                          </Link>
+                        ))}
+                      </div>
+                    )
+                )}
               </div>
             )}
           </li>
