@@ -5,26 +5,31 @@ import { useSearchParams } from "next/navigation";
 
 const FilterTabs = () => {
   const searchParams = useSearchParams();
-  const currentFilter = searchParams.get("filter");
+  const currentQuery = searchParams.get("q");
 
   return (
-    <div className="flex gap-4 mb-8">
-      <Link href="/people" className={!currentFilter ? "font-bold" : ""}>
-        All
-      </Link>
+    <nav className="flex items-center space-x-6 mb-8">
       <Link
-        href="/people?filter=partners"
-        className={currentFilter === "partners" ? "font-bold" : ""}
-      >
-        Partners
-      </Link>
+        href="/people"
+        className={`${
+          !currentQuery ? "font-bold" : ""
+        } text-black hover:text-gray-600 text-lg`}
+      ></Link>
+      <span className="text-gray-300"></span>
       <Link
-        href="/people?filter=leadership"
-        className={currentFilter === "leadership" ? "font-bold" : ""}
-      >
-        Leadership
-      </Link>
-    </div>
+        href="/people?q=partners"
+        className={`${
+          currentQuery === "partners" ? "font-bold" : ""
+        } text-black hover:text-gray-600 text-lg`}
+      ></Link>
+      <span className="text-gray-300"></span>
+      <Link
+        href="/people?q=leadership"
+        className={`${
+          currentQuery === "leadership" ? "font-bold" : ""
+        } text-black hover:text-gray-600 text-lg`}
+      ></Link>
+    </nav>
   );
 };
 

@@ -42,11 +42,12 @@ export const ColorProvider: React.FC<ColorProviderProps> = ({ children }) => {
       "/architecture/year",
       "/planning/a-z",
       "/planning/year",
-      // Add all other child item paths here
     ];
 
     // Check if current path should have white background
-    const shouldHaveWhiteBackground = whiteBackgroundPaths.includes(pathname);
+    const shouldHaveWhiteBackground =
+      whiteBackgroundPaths.includes(pathname) ||
+      pathname.startsWith("/architecture/");
 
     // Set initial states based on current path
     if (shouldHaveWhiteBackground) {

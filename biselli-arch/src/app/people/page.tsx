@@ -1,114 +1,191 @@
 import Image from "next/image";
+import io from "socket.io-client";
 import { Person } from "../types/Person";
+import FilterTabs from "./components/FilterTabs";
 import styles from "./page.module.css";
+
+const socket = io("http://localhost:3000");
+
+// Define a type for the data you expect to receive
+interface SomeEventData {
+  // Define the properties based on your expected data structure
+  id: number;
+  message: string;
+  // Add other properties as needed
+}
+
+// Example usage of the socket
+socket.on("connect", () => {
+  console.log("Connected to Socket.IO server");
+});
+
+// You can also listen for messages or events with explicit type
+socket.on("someEvent", (data: SomeEventData) => {
+  console.log("Received data:", data);
+});
 
 const people: Person[] = [
   {
     id: 1,
-    name: "Pipo Lampiao",
-    image: "/people/felipe.png",
+    name: "Brittany Abbott",
+    image:
+      "https://newmorphassets.s3.amazonaws.com/uploads/6430/BrittanyAbbott_Comp-6_select.jpg",
     role: "Principal Architect",
+    type: "partners",
   },
   {
     id: 2,
-    name: "Pipo Lampiao",
-    image: "/people/felipe.png",
+    name: "Elchin Akperov",
+    image:
+      "https://newmorphassets.s3.amazonaws.com/uploads/7438/ElchinAkperov-Website-Selected.jpg",
     role: "Principal Architect",
+    type: "leadership",
   },
   {
     id: 3,
-    name: "Pipo Lampiao",
-    image: "/people/felipe.png",
+    name: "Allison Ball",
+    image: "https://newmorphassets.s3.amazonaws.com/uploads/4909/Allison-l.jpg",
     role: "Principal Architect",
+    type: "partners",
   },
   {
     id: 4,
-    name: "Pipo Lampiao",
+    name: "Hann-Shiuh Chen",
     image: "/people/felipe.png",
     role: "Principal Architect",
+    type: "leadership",
   },
   {
     id: 5,
-    name: "Pipo Lampiao",
-    image: "/people/felipe.png",
+    name: "Brittany Abbott",
+    image:
+      "https://newmorphassets.s3.amazonaws.com/uploads/6430/BrittanyAbbott_Comp-6_select.jpg",
     role: "Principal Architect",
+    type: "partners",
   },
   {
     id: 6,
-    name: "Pipo Lampiao",
-    image: "/people/felipe.png",
+    name: "Elchin Akperov",
+    image:
+      "https://newmorphassets.s3.amazonaws.com/uploads/7438/ElchinAkperov-Website-Selected.jpg",
     role: "Principal Architect",
+    type: "leadership",
   },
   {
     id: 7,
-    name: "Pipo Lampiao",
-    image: "/people/felipe.png",
+    name: "Allison Ball",
+    image: "https://newmorphassets.s3.amazonaws.com/uploads/4909/Allison-l.jpg",
     role: "Principal Architect",
+    type: "partners",
   },
   {
     id: 8,
-    name: "Pipo Lampiao",
+    name: "Hann-Shiuh Chen",
     image: "/people/felipe.png",
     role: "Principal Architect",
+    type: "leadership",
   },
   {
     id: 9,
-    name: "Pipo Lampiao",
+    name: "Brittany Abbott",
+    image:
+      "https://newmorphassets.s3.amazonaws.com/uploads/6430/BrittanyAbbott_Comp-6_select.jpg",
+    role: "Principal Architect",
+    type: "partners",
+  },
+  {
+    id: 10,
+    name: "Elchin Akperov",
+    image:
+      "https://newmorphassets.s3.amazonaws.com/uploads/7438/ElchinAkperov-Website-Selected.jpg",
+    role: "Principal Architect",
+    type: "leadership",
+  },
+  {
+    id: 11,
+    name: "Allison Ball",
+    image: "https://newmorphassets.s3.amazonaws.com/uploads/4909/Allison-l.jpg",
+    role: "Principal Architect",
+    type: "partners",
+  },
+  {
+    id: 12,
+    name: "Hann-Shiuh Chen",
     image: "/people/felipe.png",
     role: "Principal Architect",
+    type: "leadership",
+  },
+  {
+    id: 13,
+    name: "Brittany Abbott",
+    image:
+      "https://newmorphassets.s3.amazonaws.com/uploads/6430/BrittanyAbbott_Comp-6_select.jpg",
+    role: "Principal Architect",
+    type: "partners",
+  },
+  {
+    id: 14,
+    name: "Elchin Akperov",
+    image:
+      "https://newmorphassets.s3.amazonaws.com/uploads/7438/ElchinAkperov-Website-Selected.jpg",
+    role: "Principal Architect",
+    type: "leadership",
+  },
+  {
+    id: 15,
+    name: "Allison Ball",
+    image: "https://newmorphassets.s3.amazonaws.com/uploads/4909/Allison-l.jpg",
+    role: "Principal Architect",
+    type: "partners",
+  },
+  {
+    id: 16,
+    name: "Hann-Shiuh Chen",
+    image: "/people/felipe.png",
+    role: "Principal Architect",
+    type: "leadership",
   },
   // Add more people to fill out the table
 ];
 
-export default function People() {
-  // Calculate how many rows we need based on the number of people
-  const rows = Math.ceil(people.length / 7);
+export default async function People({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
+  // Use 'q' parameter instead of 'filter'
+  const { q } = await import("next/navigation").then(() => searchParams);
+  const queryParam = Array.isArray(q) ? q[0] : q ?? "";
 
-  // Create a 2D array to represent the table
-  const tableData = Array(rows)
-    .fill(null)
-    .map((_, rowIndex) => {
-      return people.slice(rowIndex * 7, (rowIndex + 1) * 7);
-    });
+  const filteredPeople = queryParam
+    ? people.filter((person) => person.type === queryParam)
+    : people;
 
   return (
     <div className={styles.container}>
-      <table className={styles.table}>
-        <tbody>
-          {tableData.map((row, rowIndex) => (
-            <tr key={rowIndex} className={styles.row}>
-              {row.map((person, colIndex) => (
-                <td key={person?.id || colIndex} className={styles.cell}>
-                  {person && (
-                    <div className={styles.personCard}>
-                      <div className={styles.imageWrapper}>
-                        <Image
-                          src={person.image}
-                          alt={person.name}
-                          width={200}
-                          height={200}
-                          style={{
-                            width: "100%",
-                            height: "auto",
-                            objectFit: "cover",
-                          }}
-                        />
-                      </div>
-                      <p className={styles.name}>{person.name}</p>
-                    </div>
-                  )}
-                </td>
-              ))}
-              {/* Fill empty cells if row is not complete */}
-              {Array(7 - row.length)
-                .fill(null)
-                .map((_, index) => (
-                  <td key={`empty-${index}`} className={styles.cell}></td>
-                ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <FilterTabs />
+      <div className={styles.grid}>
+        {filteredPeople.map((person) => (
+          <div key={person.id} className={styles.personCard}>
+            <div className={styles.imageWrapper}>
+              <Image
+                src={person.image}
+                alt={person.name}
+                width={200}
+                height={200}
+                quality={100}
+                priority={person.id <= 4}
+                style={{
+                  width: "250px",
+                  height: "200px",
+                  objectFit: "cover",
+                }}
+              />
+            </div>
+            <p className={styles.name}>{person.name}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

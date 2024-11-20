@@ -32,14 +32,50 @@ const navItems: NavItem[] = [
           { name: "Leadership", href: "/people?q=leadership" },
         ],
       },
-      { name: "Media", href: "/media" },
+      {
+        name: "Media",
+        href: "/media",
+        nestedItems: [{ name: "Awards", href: "/media/awards" }],
+      },
     ],
   },
   {
     name: "Architecture",
     href: "/architecture",
     subitems: [
-      { name: "A-Z,", href: "/architecture/a-z" },
+      {
+        name: "A-Z,",
+        href: "/architecture/a-z",
+        nestedItems: [
+          { name: "#", href: "/architecture/a-z?q=num" },
+          { name: "A", href: "/architecture/a-z?q=a" },
+          { name: "B", href: "/architecture/a-z?q=b" },
+          { name: "C", href: "/architecture/a-z?q=c" },
+          { name: "D", href: "/architecture/a-z?q=d" },
+          { name: "E", href: "/architecture/a-z?q=e" },
+          { name: "F", href: "/architecture/a-z?q=f" },
+          { name: "G", href: "/architecture/a-z?q=g" },
+          { name: "H", href: "/architecture/a-z?q=h" },
+          { name: "I", href: "/architecture/a-z?q=i" },
+          { name: "J", href: "/architecture/a-z?q=j" },
+          { name: "K", href: "/architecture/a-z?q=k" },
+          { name: "L", href: "/architecture/a-z?q=l" },
+          { name: "M", href: "/architecture/a-z?q=m" },
+          { name: "N", href: "/architecture/a-z?q=n" },
+          { name: "O", href: "/architecture/a-z?q=o" },
+          { name: "P", href: "/architecture/a-z?q=p" },
+          { name: "Q", href: "/architecture/a-z?q=q" },
+          { name: "R", href: "/architecture/a-z?q=r" },
+          { name: "S", href: "/architecture/a-z?q=s" },
+          { name: "T", href: "/architecture/a-z?q=t" },
+          { name: "U", href: "/architecture/a-z?q=u" },
+          { name: "V", href: "/architecture/a-z?q=v" },
+          { name: "W", href: "/architecture/a-z?q=w" },
+          { name: "X", href: "/architecture/a-z?q=x" },
+          { name: "Y", href: "/architecture/a-z?q=y" },
+          { name: "Z", href: "/architecture/a-z?q=z" },
+        ],
+      },
       { name: "Year,", href: "/architecture/year" },
     ],
   },
@@ -67,8 +103,6 @@ const Navbar: React.FC = () => {
   let timeoutId: NodeJS.Timeout;
   const [activeNestedItem] = useState<string | null>(null);
 
-  console.log(isParentActive);
-
   useEffect(() => {
     setTextColor("white");
   }, []);
@@ -83,6 +117,7 @@ const Navbar: React.FC = () => {
       if (matchingSubItem) {
         setActiveItem(item.name);
         setExpandedItem(item.name);
+
         setActiveSubItem(matchingSubItem.name);
         setIsParentActive(false);
         setClickedItem(item.name);
@@ -137,12 +172,16 @@ const Navbar: React.FC = () => {
     router.push(href);
   };
 
+  const handleNestedItemClick = (letter: string) => {
+    // Navigate to the A-Z page with the selected letter as a query parameter
+    router.push(`/architecture/a-z?q=${letter}`);
+  };
+
   const textStyle = isParentActive
     ? ({
         color: textColor,
         backgroundColor: "rgba(0, 0, 0, 0.1)",
         borderRadius: "3px",
-        // transition: "background-color 0.3s ease, color 0.3s ease",
         "--underline-color": "white",
         "--underline-height": "3px",
       } as React.CSSProperties)
@@ -150,7 +189,6 @@ const Navbar: React.FC = () => {
         color: textColor,
         backgroundColor: "transparent",
         borderRadius: "3px",
-        // transition: "background-color 0.3s ease, color 0.3s ease",
         "--underline-color": "black",
         "--underline-height": "3px",
       } as React.CSSProperties);
@@ -219,9 +257,9 @@ const Navbar: React.FC = () => {
 
             {expandedItem === item.name && (
               <div className={styles.subItems}>
-                {/* First render all main subitems */}
+                {/* Render main subitems */}
                 {item.subitems.map((subitem) => (
-                  <span key={subitem.name}>
+                  <span className="span-subitem" key={subitem.name}>
                     <Link
                       href={subitem.href}
                       onClick={() =>
@@ -249,38 +287,31 @@ const Navbar: React.FC = () => {
                   </span>
                 ))}
 
-                {/* Then render nested items if their parent is active */}
-                {item.subitems.map(
-                  (subitem) =>
-                    subitem.nestedItems &&
-                    activeSubItem === subitem.name && (
-                      <div
-                        key={`nested-${subitem.name}`}
-                        className={styles.nestedItems}
-                      >
-                        {subitem.nestedItems.map((nestedItem) => (
-                          <Link
-                            key={nestedItem.name}
-                            href={nestedItem.href}
-                            onClick={() => router.push(nestedItem.href)}
-                            className={
-                              activeNestedItem === nestedItem.name
-                                ? styles.active
-                                : ""
-                            }
-                            style={
-                              {
-                                color: "black",
-                                "--underline-color": "black",
-                                "--underline-height": "1px",
-                              } as React.CSSProperties
-                            }
-                          >
-                            {nestedItem.name}
-                          </Link>
-                        ))}
-                      </div>
-                    )
+                {/* Render nested items if their parent is active */}
+                {item.subitems.map((subitem) =>
+                  subitem.nestedItems && activeSubItem === subitem.name ? (
+                    <div
+                      key={`nested-${subitem.name}`}
+                      className={styles.nestedItems}
+                      data-parent={subitem.name}
+                    >
+                      {subitem.nestedItems.map((nestedItem) => (
+                        <Link
+                          key={nestedItem.name}
+                          href={nestedItem.href}
+                          onClick={() => handleNestedItemClick(nestedItem.name)}
+                          className={
+                            activeNestedItem === nestedItem.name
+                              ? styles.active
+                              : ""
+                          }
+                          style={{ color: "black" }}
+                        >
+                          {nestedItem.name}
+                        </Link>
+                      ))}
+                    </div>
+                  ) : null
                 )}
               </div>
             )}

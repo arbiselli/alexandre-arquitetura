@@ -2,11 +2,13 @@ export default function About() {
   return (
     <div
       style={{
-        marginLeft: "60rem",
+        marginLeft: "25%",
+        marginRight: "10%",
         color: "white",
         fontSize: "1.6rem",
         padding: "4rem",
         lineHeight: "33px",
+        maxWidth: "1200px",
       }}
     >
       <p>

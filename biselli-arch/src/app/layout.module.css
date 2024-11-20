@@ -15,7 +15,7 @@
    flex-direction: column;
    justify-content: center;
    align-items: center;
-   margin-left: 150px; /* Adjust based on your navbar width */
+   margin-left: 400px; /* Adjust based on your navbar width */
  }
 
  .videoContainer {
