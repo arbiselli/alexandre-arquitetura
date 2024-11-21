@@ -26,7 +26,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <main className={styles.main}>{children}</main>
         </body>
       </ColorProvider>
-      <Suspense>{children}</Suspense>
     </html>
   );
 }
