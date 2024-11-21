@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { ArchitectureData } from "../architectureData";
 
 export default function ArchitectureAZ() {
@@ -44,21 +44,23 @@ export default function ArchitectureAZ() {
   }, [searchParams, originalData]); // Depend on originalData
 
   return (
-    <div>
-      {filteredData.length > 0 ? (
-        <ul>
-          {filteredData.map((data, index) => (
-            <li key={index}>
-              <Link href={`/architecture/${index + 1}`}>
-                <h3>{data.title}</h3>
-              </Link>
-              <p>{data.description}</p>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>No architectures found for this letter.</p>
-      )}
-    </div>
+    <Suspense fallback={<p>Loading...</p>}>
+      <div>
+        {filteredData.length > 0 ? (
+          <ul>
+            {filteredData.map((data, index) => (
+              <li key={index}>
+                <Link href={`/architecture/${index + 1}`}>
+                  <h3>{data.title}</h3>
+                </Link>
+                <p>{data.description}</p>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>No architectures found for this letter.</p>
+        )}
+      </div>
+    </Suspense>
   );
 }
