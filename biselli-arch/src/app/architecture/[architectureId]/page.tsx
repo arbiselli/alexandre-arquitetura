@@ -1,28 +1,7 @@
 "use client";
 
 import { use, useEffect, useState } from "react";
-
-interface ArchitectureData {
-  baseImage: string;
-  title: string;
-  location: string;
-  client: string;
-  siteArea: string;
-  size: string;
-  program: string;
-  design: string;
-  construction: string;
-  type: string;
-  team: string;
-  consultants: string;
-  designRecognition: string;
-  bibliography: string;
-  description: string;
-  sustainability: string;
-  images: string[];
-  drawings: string[];
-  models: string[];
-}
+import { ArchitectureData } from "../architectureData"; // Import the interface
 
 const ArchitectureDetail = ({
   params,

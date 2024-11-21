@@ -1,28 +1,7 @@
 import Image from "next/image";
-import io from "socket.io-client";
 import { Person } from "../types/Person";
 import FilterTabs from "./components/FilterTabs";
 import styles from "./page.module.css";
-
-const socket = io("http://localhost:3000");
-
-// Define a type for the data you expect to receive
-interface SomeEventData {
-  // Define the properties based on your expected data structure
-  id: number;
-  message: string;
-  // Add other properties as needed
-}
-
-// Example usage of the socket
-socket.on("connect", () => {
-  console.log("Connected to Socket.IO server");
-});
-
-// You can also listen for messages or events with explicit type
-socket.on("someEvent", (data: SomeEventData) => {
-  console.log("Received data:", data);
-});
 
 const people: Person[] = [
   {
@@ -151,7 +130,7 @@ const people: Person[] = [
 export default async function People({
   searchParams,
 }: {
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   // Use 'q' parameter instead of 'filter'
   const { q } = await import("next/navigation").then(() => searchParams);

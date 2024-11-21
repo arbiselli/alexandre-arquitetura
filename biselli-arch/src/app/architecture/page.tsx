@@ -1,5 +1,3 @@
-const ArchitecturePage = () => {
+export default function ArchitecturePage() {
   return <></>;
-};
-
-export default ArchitecturePage;
+}
