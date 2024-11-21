@@ -44,7 +44,7 @@ export default function ArchitectureAZ() {
   }, [searchParams, originalData]); // Depend on originalData
 
   return (
-    <Suspense fallback={<p>Loading...</p>}>
+    <Suspense fallback={<div>Loading...</div>}>
       <div>
         {filteredData.length > 0 ? (
           <ul>
