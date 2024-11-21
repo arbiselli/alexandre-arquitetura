@@ -1,4 +1,3 @@
-import { ReactNode, Suspense } from "react";
 import BackgroundVideo from "./components/BackgroundVideo";
 import LoadingBar from "./components/LoadingBar";
 import Navbar from "./components/Navbar";
@@ -13,7 +12,11 @@ export const metadata = {
   description: "Your app description",
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <ColorProvider>
@@ -22,7 +25,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <BackgroundVideo />
           <RouteBackground />
           <Navbar />
-          <Suspense>{children}</Suspense>
           <main className={styles.main}>{children}</main>
         </body>
       </ColorProvider>
