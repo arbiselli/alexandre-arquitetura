@@ -1,0 +1,37 @@
+.carousel {
+  position: relative;
+  text-align: center;
+  margin-top: 200px;
+}
+
+.carousel-slide {
+  display: flex;
+  flex-direction: column; /* Stack title, description, and image vertically */
+  align-items: center; /* Center align items */
+}
+
+.carousel-image {
+  width: 800px; /* Set a fixed width */
+  height: 700px; /* Set a fixed height */
+  object-fit: cover; /* Maintain aspect ratio and cover the area */
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  margin: 0 5px;
+  background-color: gray;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: black; /* Change color for active dot */
+}

@@ -7,8 +7,8 @@
  }
 
 @font-face {
-   font-family: 'Arima-Thin';
-   src: url('/fonts/Arima-Thin.ttf') format('ttf');
+   font-family: 'HelveticaNeueThin';
+   src: url('/fonts/HelveticaNeueThin.otf') format('otf');
  }
 
 @font-face {
@@ -24,8 +24,8 @@
    src: url('/fonts/Arima-Medium.ttf') format('ttf');
  }
 @font-face {
-   font-family: 'Arima-Light';
-   src: url('/fonts/Arima-Light.ttf') format('ttf');
+   font-family: 'HelveticaNeueLight';
+   src: url('/fonts/HelveticaNeueLight.otf') format('otf');
  }
 @font-face {
    font-family: 'Arima-ExtraLight';

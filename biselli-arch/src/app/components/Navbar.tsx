@@ -20,16 +20,16 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   {
-    name: "Morphosis",
+    name: "Biselli Studio",
     href: "/about",
     subitems: [
-      { name: "Contact,", href: "/contact" },
+      { name: "Contato,", href: "/contact" },
       {
-        name: "People,",
+        name: "Equipe,",
         href: "/people",
         nestedItems: [
-          { name: "Partners", href: "/people?q=partners" },
-          { name: "Leadership", href: "/people?q=leadership" },
+          { name: "Parceiros", href: "/people?q=partners" },
+          { name: "Liderança", href: "/people?q=leadership" },
         ],
       },
       {
@@ -40,43 +40,14 @@ const navItems: NavItem[] = [
     ],
   },
   {
-    name: "Architecture",
+    name: "Arquitetura",
     href: "/architecture",
     subitems: [
       {
-        name: "A-Z,",
-        href: "/architecture/a-z",
-        nestedItems: [
-          { name: "#", href: "/architecture/a-z?q=num" },
-          { name: "A", href: "/architecture/a-z?q=a" },
-          { name: "B", href: "/architecture/a-z?q=b" },
-          { name: "C", href: "/architecture/a-z?q=c" },
-          { name: "D", href: "/architecture/a-z?q=d" },
-          { name: "E", href: "/architecture/a-z?q=e" },
-          { name: "F", href: "/architecture/a-z?q=f" },
-          { name: "G", href: "/architecture/a-z?q=g" },
-          { name: "H", href: "/architecture/a-z?q=h" },
-          { name: "I", href: "/architecture/a-z?q=i" },
-          { name: "J", href: "/architecture/a-z?q=j" },
-          { name: "K", href: "/architecture/a-z?q=k" },
-          { name: "L", href: "/architecture/a-z?q=l" },
-          { name: "M", href: "/architecture/a-z?q=m" },
-          { name: "N", href: "/architecture/a-z?q=n" },
-          { name: "O", href: "/architecture/a-z?q=o" },
-          { name: "P", href: "/architecture/a-z?q=p" },
-          { name: "Q", href: "/architecture/a-z?q=q" },
-          { name: "R", href: "/architecture/a-z?q=r" },
-          { name: "S", href: "/architecture/a-z?q=s" },
-          { name: "T", href: "/architecture/a-z?q=t" },
-          { name: "U", href: "/architecture/a-z?q=u" },
-          { name: "V", href: "/architecture/a-z?q=v" },
-          { name: "W", href: "/architecture/a-z?q=w" },
-          { name: "X", href: "/architecture/a-z?q=x" },
-          { name: "Y", href: "/architecture/a-z?q=y" },
-          { name: "Z", href: "/architecture/a-z?q=z" },
-        ],
+        name: "Residencial,",
+        href: "/architecture/residential",
       },
-      { name: "Year,", href: "/architecture/year" },
+      { name: "Outros", href: "/architecture/others" },
     ],
   },
   {

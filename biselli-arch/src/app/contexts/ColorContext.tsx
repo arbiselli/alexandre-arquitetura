@@ -38,7 +38,7 @@ export const ColorProvider: React.FC<ColorProviderProps> = ({ children }) => {
       "/people",
       "/media",
       "/contact",
-      "/architecture/a-z",
+      "/architecture",
       "/architecture/year",
       "/planning/a-z",
       "/planning/year",

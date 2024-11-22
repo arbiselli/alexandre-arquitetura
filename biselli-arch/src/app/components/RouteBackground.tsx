@@ -12,11 +12,11 @@ const routeImages: { [key: string]: string[] } = {
     "/about/nick-night-52F2gX0COs4-unsplash.jpg",
     "/about/upal-patel-3kdroYxiOn4-unsplash.jpg",
   ],
-  "/architecture": [
-    "/architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg",
-    "/architecture/lance-anderson-QdAAasrZhdk-unsplash.jpg",
-    "/architecture/osman-rana-5LED2xbiKvk-unsplash.jpg",
-  ],
+  // "/architecture": [
+  //   "/architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg",
+  //   "/architecture/lance-anderson-QdAAasrZhdk-unsplash.jpg",
+  //   "/architecture/osman-rana-5LED2xbiKvk-unsplash.jpg",
+  // ],
   "/planning": [
     "/planning/image1.jpg",
     "/planning/image2.jpg",

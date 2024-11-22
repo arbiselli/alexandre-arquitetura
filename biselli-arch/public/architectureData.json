@@ -1,7 +1,7 @@
 [
    {
-     "baseImage": "url_to_base_image_1.jpg",
-     "title": "Architecture A",
+     "baseImage": "./architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg",
+     "title": "Corporate Tower",
      "location": "Location 1",
      "client": "Client 1",
      "siteArea": "2000 m²",
@@ -14,15 +14,15 @@
      "consultants": "Consultant A",
      "designRecognition": "Award 1",
      "bibliography": "Reference 1",
-     "description": "Description of Architecture A.",
+     "description": "Insane corporate tower, made by me",
      "sustainability": "LEED Certified",
      "images": ["url_to_image_1.jpg", "url_to_image_2.jpg"],
      "drawings": ["url_to_drawing_1.jpg"],
      "models": ["url_to_model_1.jpg"]
    },
    {
-     "baseImage": "url_to_base_image_2.jpg",
-     "title": "Architecture B",
+     "baseImage": "./architecture/lance-anderson-QdAAasrZhdk-unsplash.jpg",
+     "title": "Glasses Building",
      "location": "Location 2",
      "client": "Client 2",
      "siteArea": "3000 m²",
@@ -35,7 +35,7 @@
      "consultants": "Consultant B",
      "designRecognition": "Award 2",
      "bibliography": "Reference 2",
-     "description": "Description of Architecture B.",
+     "description": "Building of glasses",
      "sustainability": "BREEAM Certified",
      "images": ["url_to_image_3.jpg", "url_to_image_4.jpg"],
      "drawings": ["url_to_drawing_2.jpg"],
