@@ -12,8 +12,8 @@
  }
 
 @font-face {
-   font-family: 'Arima-SemiBold';
-   src: url('/fonts/Arima-SemiBold.ttf') format('ttf');
+   font-family: 'HelveticaNeueBold';
+   src: url('/fonts/HelveticaNeueBold.otf') format('otf');
  }
 @font-face {
    font-family: 'Arima-Regular';

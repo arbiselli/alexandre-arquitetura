@@ -20,12 +20,23 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   {
-    name: "Biselli Studio",
+    name: "arquitetura",
+    href: "/architecture",
+    subitems: [
+      {
+        name: "residencial",
+        href: "/architecture?q=residential",
+      },
+      { name: "outros", href: "/architecture?q=others" },
+    ],
+  },
+  {
+    name: "media",
     href: "/about",
     subitems: [
-      { name: "Contato,", href: "/contact" },
+      { name: "Contato", href: "/contact" },
       {
-        name: "Equipe,",
+        name: "Equipe",
         href: "/people",
         nestedItems: [
           { name: "Parceiros", href: "/people?q=partners" },
@@ -37,17 +48,6 @@ const navItems: NavItem[] = [
         href: "/media",
         nestedItems: [{ name: "Awards", href: "/media/awards" }],
       },
-    ],
-  },
-  {
-    name: "Arquitetura",
-    href: "/architecture",
-    subitems: [
-      {
-        name: "Residencial,",
-        href: "/architecture/residential",
-      },
-      { name: "Outros", href: "/architecture/others" },
     ],
   },
   {
@@ -112,7 +112,7 @@ const Navbar: React.FC = () => {
   }, [pathname]);
 
   useEffect(() => {
-    setTextColor("white");
+    setTextColor("black");
     setShowVideo(isParentActive);
     setIsLoading(false);
   }, []);
@@ -123,7 +123,7 @@ const Navbar: React.FC = () => {
     setActiveSubItem(null);
     setIsParentActive(true);
     setClickedItem(name);
-    setTextColor("white");
+    setTextColor("black");
     setShowVideo(true);
     router.push(href);
   };
@@ -151,9 +151,9 @@ const Navbar: React.FC = () => {
   const textStyle = isParentActive
     ? ({
         color: textColor,
-        backgroundColor: "rgba(0, 0, 0, 0.1)",
+        // backgroundColor: "rgba(0, 0, 0, 0.1)",
         borderRadius: "3px",
-        "--underline-color": "white",
+        "--underline-color": "black",
         "--underline-height": "3px",
       } as React.CSSProperties)
     : ({

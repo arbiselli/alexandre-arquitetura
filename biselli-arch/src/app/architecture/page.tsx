@@ -22,9 +22,5 @@ export default function ArchitecturePage() {
     fetchData();
   }, []);
 
-  return (
-    <div>
-      <Carousel data={filteredData} />
-    </div>
-  );
+  return <Carousel data={filteredData} />;
 }

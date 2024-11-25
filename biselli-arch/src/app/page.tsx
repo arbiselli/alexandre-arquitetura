@@ -1,9 +1,28 @@
 "use client";
+import { useEffect, useState } from "react";
+import Carousel from "./components/Carousel"; // Adjust the import path if necessary
 
-import { useColor } from "./contexts/ColorContext";
+const HomePage = () => {
+  const [carouselData, setCarouselData] = useState([]);
 
-export default function Home() {
-  const { textColor } = useColor();
+  const fetchData = async () => {
+    try {
+      const response = await fetch("/architectureData.json"); // Adjust the path to your data source
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      setCarouselData(data);
+    } catch (error) {
+      console.error("Failed to fetch data:", error);
+    }
+  };
 
-  return <h1 style={{ color: textColor }}></h1>;
-}
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return <Carousel data={carouselData} />;
+};
+
+export default HomePage;

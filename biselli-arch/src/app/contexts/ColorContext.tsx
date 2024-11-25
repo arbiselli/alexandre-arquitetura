@@ -28,13 +28,15 @@ interface ColorProviderProps {
 }
 
 export const ColorProvider: React.FC<ColorProviderProps> = ({ children }) => {
-  const [textColor, setTextColor] = useState<string>("white");
+  const [textColor, setTextColor] = useState<string>("black");
   const [showVideo, setShowVideo] = useState<boolean>(true);
   const pathname = usePathname();
 
   useEffect(() => {
     // List of paths that should have white background (child items)
     const whiteBackgroundPaths = [
+      "/",
+      "/about",
       "/people",
       "/media",
       "/contact",
