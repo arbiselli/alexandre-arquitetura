@@ -82,7 +82,7 @@ const ArchitectureDetail = ({
         <p>
           TIPO: <br />
         </p>
-        {data.tipos}
+        {data.tipo}
         <p>
           RECONHECIMENTO DE DESIGN: <br />
         </p>

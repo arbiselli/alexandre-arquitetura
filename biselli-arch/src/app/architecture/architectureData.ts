@@ -10,7 +10,7 @@ export interface ArchitectureData {
   programa: string,
   design: string,
   construcao: string,
-  tipos: string,
+  tipo: string,
   reconhecimentoDesign: string,
   bibliografia: string,
   descricao: string,
