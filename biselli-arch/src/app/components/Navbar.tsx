@@ -34,7 +34,6 @@ const navItems: NavItem[] = [
     name: "media",
     href: "/about",
     subitems: [
-      { name: "Contato", href: "/contact" },
       {
         name: "Equipe",
         href: "/people",
@@ -51,12 +50,9 @@ const navItems: NavItem[] = [
     ],
   },
   {
-    name: "Planning",
-    href: "/planning",
-    subitems: [
-      { name: "A-Z,", href: "/planning/a-z" },
-      { name: "Year,", href: "/planning/year" },
-    ],
+    name: "contato",
+    href: "/contact",
+    subitems: [],
   },
 ];
 

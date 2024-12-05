@@ -1,0 +1,24 @@
+.main-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white; /* Exemplo de fundo translúcido */
+  z-index: 1000; /* Valor mais alto */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left-wrapper h1 {
+  font-size: 3.5rem;
+}
+
+.left-wrapper p {
+  font-size: .7rem;
+  margin-right: 5px;
+  text-transform: uppercase;
+}

@@ -2,9 +2,9 @@
   position: relative;
   text-align: center;
   width: 100%;
-  max-width: 1000px; /* Set a maximum width for the carousel */
-  margin: auto; /* Center the carousel */
+  max-width: 1400px; /* Set a maximum width for the carousel */
   justify-items: center;
+  margin-top: 180px;
 }
 
 .carousel-slide {
@@ -13,27 +13,26 @@
   display: flex;
   flex-direction: row; /* Stack title, description, and image vertically */
   align-items: center; /* Center align items */
-  margin-top:230px;
-  margin-right: 100px;
   position: relative;
-  max-height: 500px; /* Set a maximum height for the slide */
+  max-height: 1000px; /* Set a maximum height for the slide */
+  max-width: 1200px; /* Set a maximum height for the slide */
 }
 
 .carousel-image {
   width: 100%; /* Full width */
-  max-height: 500px; /* Set a maximum height */
-  min-height: 500px; /* Set a maximum height */
-  min-width: 800px;
+  max-height: 1000px; /* Set a maximum height */
+  min-height: 1000px; /* Set a maximum height */
+  min-width: 1200px;
+  max-width: 1200px;
   height: auto; /* Maintain aspect ratio */
   object-fit: cover; /* Cover the area */
-  border-radius: 10px; /* Rounded corners */
   object-fit: cover;
 }
 
 .carousel-dots {
   position: absolute; /* Position dots inside the image */
   bottom: 10px; /* Adjust as needed */
-  left: 50%;
+  left: 4%;
   transform: translateX(-50%); /* Center the dots */
   display: flex;
   gap: 5px; /* Space between dots */
@@ -54,11 +53,19 @@
 }
 
 .carousel-title{
-  margin-top: 23px;
-  line-height: 23px;
+  color: white;
+  position: absolute;
+  bottom: 20px;
+  left: 2.5%;
+  /* margin-top: -30px; */
   letter-spacing: 2px;
-  font-size: 3.5rem;
+  font-size: 2.3rem;
   text-align: justify;
+}
+
+.carousel-title:hover{
+  cursor: pointer;
+  text-decoration: underline white; /* Sublinhado vermelho */
 }
 
 .carousel-description {

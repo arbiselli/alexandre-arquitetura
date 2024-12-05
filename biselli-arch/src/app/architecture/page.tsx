@@ -4,6 +4,8 @@ import Carousel from "../components/Carousel";
 
 export default function ArchitecturePage() {
   const [filteredData, setFilteredData] = useState([]);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [selectedId, setSelectedId] = useState<string | null>(null);
 
   const fetchData = async () => {
     try {
@@ -22,5 +24,13 @@ export default function ArchitecturePage() {
     fetchData();
   }, []);
 
-  return <Carousel data={filteredData} />;
+  const handleTitleClick = (id: string) => {
+    setSelectedId(id);
+  };
+
+  return (
+    <div>
+      <Carousel data={filteredData} onTitleClick={handleTitleClick} />
+    </div>
+  );
 }

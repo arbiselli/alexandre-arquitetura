@@ -1,7 +1,7 @@
 "use client";
-
 import { use, useEffect, useState } from "react";
 import { ArchitectureData } from "../architectureData"; // Import the interface
+import "./page.css"; // Import the CSS file
 
 const ArchitectureDetail = ({
   params,
@@ -9,66 +9,34 @@ const ArchitectureDetail = ({
   params: Promise<{ architectureId: string }>;
 }) => {
   const { architectureId } = use(params);
-  const [data, setData] = useState<ArchitectureData | null>(null);
+  const [data, setData] = useState<ArchitectureData | null>(null); // State to hold fetched data
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      // Simulated data fetching (replace this with actual data fetching logic)
-      const architectureData: { [key: string]: ArchitectureData } = {
-        1: {
-          baseImage: "url_to_base_image_1.jpg",
-          title: "Architecture 1",
-          location: "Location 1",
-          client: "Client 1",
-          siteArea: "2000 m²",
-          size: "500 m²",
-          program: "Residential",
-          design: "Modern",
-          construction: "Completed",
-          type: "Building",
-          team: "Team A",
-          consultants: "Consultant A",
-          designRecognition: "Award 1",
-          bibliography: "Reference 1",
-          description: "Description of Architecture 1.",
-          sustainability: "LEED Certified",
-          images: ["url_to_image_1.jpg", "url_to_image_2.jpg"],
-          drawings: ["url_to_drawing_1.jpg"],
-          models: ["url_to_model_1.jpg"],
-        },
-        2: {
-          baseImage: "url_to_base_image_2.jpg",
-          title: "Architecture 2",
-          location: "Location 2",
-          client: "Client 2",
-          siteArea: "3000 m²",
-          size: "700 m²",
-          program: "Commercial",
-          design: "Contemporary",
-          construction: "Ongoing",
-          type: "Office",
-          team: "Team B",
-          consultants: "Consultant B",
-          designRecognition: "Award 2",
-          bibliography: "Reference 2",
-          description: "Description of Architecture 2.",
-          sustainability: "BREEAM Certified",
-          images: ["url_to_image_3.jpg", "url_to_image_4.jpg"],
-          drawings: ["url_to_drawing_2.jpg"],
-          models: ["url_to_model_2.jpg"],
-        },
-      };
-
-      // Simulate an async operation (e.g., fetching from an API)
-      if (architectureId) {
-        const fetchedData = architectureData[architectureId] || null;
-        setData(fetchedData);
+  const fetchData = async () => {
+    try {
+      const response = await fetch("/architectureData.json");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
       }
-      setLoading(false);
-    };
+      const architectureData: ArchitectureData[] = await response.json();
 
-    fetchData();
+      const fetchedData = architectureData.find(
+        (item) => item.id === architectureId
+      );
+
+      console.log(architectureId);
+      console.log(fetchedData);
+      console.log(architectureData);
+      setData(fetchedData || null); // Set the fetched data or null if not found
+    } catch (error) {
+      console.error("Failed to fetch data:", error);
+    } finally {
+      setLoading(false); // Set loading to false after fetching
+    }
+  };
+
+  useEffect(() => {
+    fetchData(); // Call fetchData on component mount
   }, [architectureId]); // Run effect when 'architectureId' changes
 
   if (loading) {
@@ -80,67 +48,84 @@ const ArchitectureDetail = ({
   }
 
   return (
-    <div>
-      <img src={data.baseImage} alt={data.title} />
-      <h1>{data.title}</h1>
-      <p>
-        <strong>Location:</strong> {data.location}
-      </p>
-      <p>
-        <strong>Client:</strong> {data.client}
-      </p>
-      <p>
-        <strong>Site Area:</strong> {data.siteArea}
-      </p>
-      <p>
-        <strong>Size:</strong> {data.size}
-      </p>
-      <p>
-        <strong>Program:</strong> {data.program}
-      </p>
-      <p>
-        <strong>Design:</strong> {data.design}
-      </p>
-      <p>
-        <strong>Construction:</strong> {data.construction}
-      </p>
-      <p>
-        <strong>Type:</strong> {data.type}
-      </p>
-      <p>
-        <strong>Team:</strong> {data.team}
-      </p>
-      <p>
-        <strong>Consultants:</strong> {data.consultants}
-      </p>
-      <p>
-        <strong>Design Recognition:</strong> {data.designRecognition}
-      </p>
-      <p>
-        <strong>Bibliography:</strong> {data.bibliography}
-      </p>
-      <p>
-        <strong>Description:</strong> {data.description}
-      </p>
-      <p>
-        <strong>Sustainability:</strong> {data.sustainability}
-      </p>
+    <body className="main-wrapper">
+      <div className="left-wrapper">
+        <h1>{data.titulo}</h1>
+        <p>
+          LOCALIZAÇÃO: <br />
+        </p>
+        {data.localizacao}
+        <p>
+          CLIENTE: <br />
+        </p>
+        {data.cliente}
+        <p>
+          AREA: <br />
+        </p>
+        {data.area}
+        <p>
+          TAMANHO: <br />
+        </p>
+        {data.tamanho}
+        <p>
+          PROGRAMA: <br />
+        </p>
+        {data.programa}
+        <p>
+          DESIGN: <br />
+        </p>
+        {data.design}
+        <p>
+          CONSTRUÇÃO: <br />
+        </p>
+        {data.construcao}
+        <p>
+          TIPO: <br />
+        </p>
+        {data.tipos}
+        <p>
+          RECONHECIMENTO DE DESIGN: <br />
+        </p>
+        {data.reconhecimentoDesign}
+      </div>
 
-      <h2>Images</h2>
-      {data.images.map((image, index) => (
+      <div className="right-wrapper">
+        <div className="descriptions">
+          <h2>{data.subtitulo}</h2>
+          <p>
+            Descrição <br />
+            {data.descricao}
+          </p>
+        </div>
+        <div className="project-images">
+          <p>Imagens: </p>
+          <br />
+          <div className="images"></div>
+          <p>Desenhos: </p>
+          <br />
+          <div className="images"></div>
+          <p>Modelos: </p>
+          <br />
+          <div className="images"></div>
+        </div>
+      </div>
+      <p>sustentabilidade: {data.sustentabilidade}</p>
+
+      <h2>imagens</h2>
+      {data.imagens.map((image, index) => (
         <img key={index} src={image} alt={`Image ${index + 1}`} />
       ))}
 
-      <h2>Drawings</h2>
-      {data.drawings.map((drawing, index) => (
+      <h2>desenhos</h2>
+      {data.desenhos.map((drawing, index) => (
         <img key={index} src={drawing} alt={`Drawing ${index + 1}`} />
       ))}
 
-      <h2>Models</h2>
-      {data.models.map((model, index) => (
+      <h2>modelos</h2>
+      {data.modelos.map((model, index) => (
         <img key={index} src={model} alt={`Model ${index + 1}`} />
       ))}
-    </div>
+    </body>
   );
 };
 
