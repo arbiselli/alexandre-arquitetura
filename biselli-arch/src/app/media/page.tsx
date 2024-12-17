@@ -1,25 +1,85 @@
+"use client";
+import { useRouter } from "next/navigation"; // Correct import for useRouter
+import { useEffect, useState } from "react";
+import { ArchitectureData } from "../architecture/architectureData";
+import { MediaData } from "../media/mediaData";
+import "./MediaPage.css";
+
 export default function Media() {
+  const [mediaData, setMediaData] = useState<MediaData[]>([]);
+  const [architectureData, setArchitectureData] = useState<ArchitectureData[]>(
+    []
+  );
+  const router = useRouter(); // Initialize useRouter
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch("/mediaData.json");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data: MediaData[] = await response.json();
+      setMediaData(data);
+    } catch (error) {
+      console.error("Failed to fetch data:", error);
+    }
+  };
+
+  const fetchArchitectureData = async () => {
+    try {
+      const response = await fetch("/architectureData.json");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data: ArchitectureData[] = await response.json();
+      setArchitectureData(data);
+    } catch (error) {
+      console.error("Failed to fetch data:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+    fetchArchitectureData();
+  }, []);
+
   return (
-    <div
-      style={{
-        marginLeft: "25%",
-        marginRight: "10%",
-        color: "black",
-        fontSize: "1.6rem",
-        padding: "4rem",
-        lineHeight: "33px",
-        maxWidth: "1200px",
-      }}
-    >
-      <p>
-        Over the past 40 years, Morphosis has received 29 Progressive
-        Architecture awards, over 120 American Institute of Architects (AIA)
-        awards, and numerous other honors and recognitions. Morphosis works have
-        published and exhibited worldwide, and the firm has been the subject of
-        34 monographs. Recently published monographs include: Morphosis:
-        2004-2018 (Rizzoli), M:Morphosis (Equalbooks)¸ Combinatory Urbanism
-        (StrayDogCafe), Morphosis (Edilstampa).
-      </p>
+    <div>
+      {
+        <div className="media-container">
+          {mediaData.length > 0 ? (
+            mediaData.map((item, index) => (
+              <div key={index} className="media-card-container">
+                <div className="ano">{item.ano}</div>
+                <div className="nome">{item.nome}</div>
+                <div className="projeto-citado-container">
+                  <div className="projeto-citado">Projeto Citado:</div>
+                  {architectureData
+                    .filter(
+                      (architecture) => architecture.id === item.projetoCitado
+                    )
+                    .map((filteredItem) => (
+                      <a
+                        key={filteredItem.id}
+                        className="link-arquitetura"
+                        onClick={(e) => {
+                          e.preventDefault(); // Prevent default anchor behavior
+                          router.push(`/architecture/${filteredItem.id}`); // Navigate to the new URL
+                        }}
+                      >
+                        {filteredItem.titulo}
+                      </a>
+                    ))}
+                </div>
+
+                <hr></hr>
+              </div>
+            ))
+          ) : (
+            <p>No architectures found.</p>
+          )}
+        </div>
+      }
     </div>
   );
 }

@@ -32,22 +32,8 @@ const navItems: NavItem[] = [
   },
   {
     name: "media",
-    href: "/about",
-    subitems: [
-      {
-        name: "Equipe",
-        href: "/people",
-        nestedItems: [
-          { name: "Parceiros", href: "/people?q=partners" },
-          { name: "Liderança", href: "/people?q=leadership" },
-        ],
-      },
-      {
-        name: "Media",
-        href: "/media",
-        nestedItems: [{ name: "Awards", href: "/media/awards" }],
-      },
-    ],
+    href: "/media",
+    subitems: [],
   },
   {
     name: "contato",

@@ -1,0 +1,45 @@
+.media-container {
+  margin-top: 100px;
+ width: 1500px;
+ align-items: left;
+ justify-content: start;
+}
+
+.media-card-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.ano {
+  font-size: .7rem;
+}
+
+.nome {
+  font-style: italic;
+  font-size: 1rem;
+  margin-bottom: .5rem;
+}
+
+.projeto-citado-container {
+  display: flex;
+}
+
+.projeto-citado {
+  text-transform: uppercase;
+  font-size: .7rem;
+  margin-right: 5px;
+  text-align: bottom;
+}
+
+.link-arquitetura {
+  cursor: pointer;
+  flex-flow: row nowrap;
+  font-size: 14.4px;
+  text-decoration: underline;
+}

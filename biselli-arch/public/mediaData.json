@@ -1,23 +1,20 @@
 [
    {
      "id": "1",
-     "nome": "The plan",
-     "edicao": "Webb, Michael The Plan. (2023-05-01).",
-     "projetoCitado": "1",
-     "imagemBase": "./architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"
+     "ano": "1997",
+     "nome": "AIA Florida Honor Award of Excellence",
+     "projetoCitado": "1"
    },
    {
      "id": "2",
-     "nome": "GA Document 162",
-     "edicao": "GA Document 162. Yoshio Futagawa (2023-01-01). 34- 50.",
-     "projetoCitado": "2",
-     "imagemBase": "./architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"
+     "ano": "2024",
+     "nome": "Architizer A+Awards / Architecture + Branding Category / Jury Winner",
+     "projetoCitado": "2"
    },
    {
-     "id": "1",
-     "nome": "Yangtze River International Conference Center",
-     "edicao": "Morphosis Room Diseno. (2022-03-01). 44-45.",
-     "projetoCitado": "3",
-     "imagemBase": "./architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"
+     "id": "3",
+     "ano": "2013",
+     "nome": "Architizer A + Awards / Museum Category / Jury Winner",
+     "projetoCitado": "3"
    }
  ]
