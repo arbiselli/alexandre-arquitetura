@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { ArchitectureData } from "../architecture/architectureData";
 import { MediaData } from "../media/mediaData";
 import "./MediaPage.css";
+import LoadingBar from "../components/LoadingBar";
 
 export default function Media() {
   const [mediaData, setMediaData] = useState<MediaData[]>([]);
@@ -76,7 +77,7 @@ export default function Media() {
               </div>
             ))
           ) : (
-            <p>No architectures found.</p>
+            <LoadingBar />
           )}
         </div>
       }

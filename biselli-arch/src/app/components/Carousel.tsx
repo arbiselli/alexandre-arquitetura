@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation"; // Correct import for useRouter
 import React, { useEffect, useState } from "react";
 import { ArchitectureData } from "../architecture/architectureData"; // Import the ArchitectureData interface
 import "./Carousel.css"; // Ensure to import the CSS file
+import LoadingBar from "./LoadingBar";
 
 interface CarouselProps {
   data: ArchitectureData[]; // Use the ArchitectureData interface for the data prop
@@ -27,7 +28,7 @@ const Carousel: React.FC<CarouselProps> = ({ data }) => {
 
   // Check if data is available
   if (!data || data.length === 0) {
-    return <div>No data available</div>; // Render a message if no data
+    return <LoadingBar />
   }
 
   return (
@@ -38,26 +39,28 @@ const Carousel: React.FC<CarouselProps> = ({ data }) => {
           alt={data[currentIndex].titulo}
           className="carousel-image" // Add a class for styling
         />
-        <div className="carousel-dots">
-          {data.map((_, index) => (
-            <span
-              key={index}
-              className={`dot ${index === currentIndex ? "active" : ""}`}
-              onClick={() => setCurrentIndex(index)} // Allow clicking on dots to change slide
-            />
-          ))}
+        <div className="bottom-carousel-slide">
+          <p className="carousel-title">
+            <a
+              onClick={(e) => {
+                e.preventDefault(); // Prevent default anchor behavior
+                router.push(`/architecture/${data[currentIndex].id}`); // Navigate to the new URL
+              }}
+            >
+              {data[currentIndex].titulo}
+            </a>
+          </p>
+          <div className="carousel-dots">
+            {data.map((_, index) => (
+              <span
+                key={index}
+                className={`dot ${index === currentIndex ? "active" : ""}`}
+                onClick={() => setCurrentIndex(index)} // Allow clicking on dots to change slide
+              />
+            ))}
+          </div>
         </div>
       </div>
-      <p className="carousel-title">
-        <a
-          onClick={(e) => {
-            e.preventDefault(); // Prevent default anchor behavior
-            router.push(`/architecture/${data[currentIndex].id}`); // Navigate to the new URL
-          }}
-        >
-          {data[currentIndex].titulo}
-        </a>
-      </p>
     </div>
   );
 };

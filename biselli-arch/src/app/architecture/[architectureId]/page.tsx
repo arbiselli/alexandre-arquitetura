@@ -24,9 +24,6 @@ const ArchitectureDetail = ({
         (item) => item.id === architectureId
       );
 
-      console.log(architectureId);
-      console.log(fetchedData);
-      console.log(architectureData);
       setData(fetchedData || null); // Set the fetched data or null if not found
     } catch (error) {
       console.error("Failed to fetch data:", error);
@@ -48,83 +45,102 @@ const ArchitectureDetail = ({
   }
 
   return (
-    <body className="main-wrapper">
-      <div className="left-wrapper">
-        <h1>{data.titulo}</h1>
-        <p>
-          LOCALIZAÇÃO: <br />
-        </p>
-        {data.localizacao}
-        <p>
-          CLIENTE: <br />
-        </p>
-        {data.cliente}
-        <p>
-          AREA: <br />
-        </p>
-        {data.area}
-        <p>
-          TAMANHO: <br />
-        </p>
-        {data.tamanho}
-        <p>
-          PROGRAMA: <br />
-        </p>
-        {data.programa}
-        <p>
-          DESIGN: <br />
-        </p>
-        {data.design}
-        <p>
-          CONSTRUÇÃO: <br />
-        </p>
-        {data.construcao}
-        <p>
-          TIPO: <br />
-        </p>
-        {data.tipo}
-        <p>
-          RECONHECIMENTO DE DESIGN: <br />
-        </p>
-        {data.reconhecimentoDesign}
-      </div>
-
-      <div className="right-wrapper">
-        <div className="descriptions">
-          <h2>{data.subtitulo}</h2>
+    <body>
+      <img
+        src={data.imagemBase}
+        alt={data.titulo}
+        className="carousel-image" // Add a class for styling
+      />
+      <h1 className="title">{data.titulo}</h1>
+      <div className="main-wrapper">
+        <div className="left-wrapper">
           <p>
-            Descrição <br />
-            {data.descricao}
+            LOCALIZAÇÃO: <br />
           </p>
+          <div className="result">
+            {data.localizacao}
+          </div>
+          <p>
+            CLIENTE: <br />
+          </p>
+          <div className="result">
+            {data.cliente}
+          </div>
+          <p>
+            AREA: <br />
+          </p>
+          <div className="result">
+            {data.area}
+          </div>
+          <p>
+            TAMANHO: <br />
+          </p>
+          <div className="result">
+            {data.tamanho}
+          </div>
+          <p>
+            PROGRAMA: <br />
+          </p>
+          <div className="result">
+            {data.programa}
+          </div>
+          <p>
+            DESIGN: <br />
+          </p>
+          <div className="result">
+            {data.design}
+          </div>
+          <p>
+            CONSTRUÇÃO: <br />
+          </p>
+          <div className="result">
+            {data.construcao}
+          </div>
+          <p>
+            TIPO: <br />
+          </p>
+          <div className="result">
+            {data.tipo}
+          </div>
+          <p>
+            RECONHECIMENTO DE DESIGN: <br />
+          </p>
+          <div className="result">
+            {data.reconhecimentoDesign}
+          </div>
         </div>
-        <div className="project-images">
-          <p>Imagens: </p>
-          <br />
-          <div className="images"></div>
-          <p>Desenhos: </p>
-          <br />
-          <div className="images"></div>
-          <p>Modelos: </p>
-          <br />
-          <div className="images"></div>
+        <div className="right-wrapper">
+          <div className="descriptions">
+            {/* <h2>{data.subtitulo}</h2> */}
+            <p className="description-titles">
+              Descrição <br />
+            </p>
+            <p className="description-content">
+              {data.descricao}
+            </p>
+          </div>
+          <div className="project-images">
+            <p className="description-titles">Desenhos:</p>
+            <div className="images">
+              {data.imagens.map((image, index) => (
+                <img key={index} src={image} alt={`Image ${index + 1}`} />
+              ))}
+            </div>
+            <p className="description-titles">Renderizações:</p>
+            <div className="images">
+              {data.desenhos.map((drawing, index) => (
+                <img key={index} src={drawing} alt={`Drawing ${index + 1}`} />
+              ))}
+            </div>
+            <p className="description-titles">Modelos:</p>
+            <div className="images">
+              {data.modelos.map((model, index) => (
+                <img key={index} src={model} alt={`Model ${index + 1}`} />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
-      <p>sustentabilidade: {data.sustentabilidade}</p>
-
-      <h2>imagens</h2>
-      {data.imagens.map((image, index) => (
-        <img key={index} src={image} alt={`Image ${index + 1}`} />
-      ))}
-
-      <h2>desenhos</h2>
-      {data.desenhos.map((drawing, index) => (
-        <img key={index} src={drawing} alt={`Drawing ${index + 1}`} />
-      ))}
-
-      <h2>modelos</h2>
-      {data.modelos.map((model, index) => (
-        <img key={index} src={model} alt={`Model ${index + 1}`} />
-      ))}
     </body>
   );
 };

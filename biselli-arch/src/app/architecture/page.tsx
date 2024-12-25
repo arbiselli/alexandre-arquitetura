@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { ArchitectureData } from "../architecture/architectureData";
 import Carousel from "../components/Carousel";
 import "./ArchitecturePage.css";
+import LoadingBar from "../components/LoadingBar";
 
 export default function ArchitecturePage() {
   const [filteredData, setFilteredData] = useState<ArchitectureData[]>([]);
@@ -38,9 +39,9 @@ export default function ArchitecturePage() {
   });
 
   return (
-    <div>
+    <div className="architecture-container">
       {query ? (
-        <div className="architecture-container">
+        <div>
           <div className="card-container">
             {filteredArchitectures.length > 0 ? (
               filteredArchitectures.map((item) => (
@@ -54,12 +55,14 @@ export default function ArchitecturePage() {
                 </div>
               ))
             ) : (
-              <p>No architectures found.</p>
+              <LoadingBar />
             )}
           </div>
         </div>
       ) : (
-        <Carousel data={filteredData} onTitleClick={() => {}} />
+        <div>
+          <Carousel data={filteredData} onTitleClick={() => { }} />
+        </div>
       )}
     </div>
   );
