@@ -2,6 +2,8 @@
 import { use, useEffect, useState } from "react";
 import { ArchitectureData } from "../architectureData"; // Import the interface
 import "./page.css"; // Import the CSS file
+import { useRouter } from 'next/navigation';
+import classNames from 'classnames';
 
 const ArchitectureDetail = ({
   params,
@@ -11,6 +13,79 @@ const ArchitectureDetail = ({
   const { architectureId } = use(params);
   const [data, setData] = useState<ArchitectureData | null>(null); // State to hold fetched data
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
+  const [modalImage, setModalImage] = useState<string | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
+  const [showModalImage, setShowModalImage] = useState<boolean>(false);
+
+  // Function to go back to the previous page
+  const goBack = () => {
+    router.back();
+  };
+
+  // Function to open the modal
+  const openModal = (image: string, index: number) => {
+    setShowModalImage(false);
+    setTimeout(() => {
+      setModalImage(image);
+      setCurrentImageIndex(index);
+      setTimeout(() => {
+        setShowModalImage(true);
+      }, 10); // Ensure state is set after image is set
+    }, 10); // Reduced delay for smoother transition
+  };
+
+  // Function to close the modal
+  const closeModal = () => {
+    setShowModalImage(false);
+    setTimeout(() => {
+      setModalImage(null);
+    }, 500);
+  };
+
+  // Function to show the previous image
+  const showPreviousImage = () => {
+    if (data) {
+      setShowModalImage(false);
+      setTimeout(() => {
+        const newIndex = (currentImageIndex - 1 + data.imagens.length) % data.imagens.length;
+        setModalImage(data.imagens[newIndex]);
+        setCurrentImageIndex(newIndex);
+        setShowModalImage(true);
+      }, 500);
+    }
+  };
+
+  // Function to show the next image
+  const showNextImage = () => {
+    if (data) {
+      setShowModalImage(false);
+      setTimeout(() => {
+        const newIndex = (currentImageIndex + 1) % data.imagens.length;
+        setModalImage(data.imagens[newIndex]);
+        setCurrentImageIndex(newIndex);
+        setShowModalImage(true);
+      }, 500);
+    }
+  };
+
+  // Handle keyboard events for navigation
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (modalImage) {
+        if (event.key === "ArrowLeft") {
+          showPreviousImage();
+        } else if (event.key === "ArrowRight") {
+          showNextImage();
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [modalImage, currentImageIndex, data]);
 
   const fetchData = async () => {
     try {
@@ -45,12 +120,18 @@ const ArchitectureDetail = ({
   }
 
   return (
-    <body>
-      <img
-        src={data.imagemBase}
-        alt={data.titulo}
-        className="carousel-image" // Add a class for styling
+    <div className="body-architecture">
+      <button
+        onClick={modalImage ? closeModal : goBack}
+        className={modalImage ? "modal-close-button" : "close-button"}
       />
+      <div className="image-container">
+        <img
+          src={data.imagemBase}
+          alt={data.titulo}
+          className="main-image" // Add a class for styling
+        />
+      </div>
       <h1 className="title">{data.titulo}</h1>
       <div className="main-wrapper">
         <div className="left-wrapper">
@@ -120,28 +201,45 @@ const ArchitectureDetail = ({
             </p>
           </div>
           <div className="project-images">
-            <p className="description-titles">Desenhos:</p>
-            <div className="images">
-              {data.imagens.map((image, index) => (
-                <img key={index} src={image} alt={`Image ${index + 1}`} />
-              ))}
+            <div className="project-images-wrapper">
+              <p className="description-titles">Desenhos:</p>
+              <div className="images">
+                {data.imagens.map((image, index) => (
+                  <img key={index} src={image} className="image" alt={`Image ${index + 1}`} onClick={() => openModal(image, index)} />
+                ))}
+              </div>
             </div>
-            <p className="description-titles">Renderizações:</p>
-            <div className="images">
-              {data.desenhos.map((drawing, index) => (
-                <img key={index} src={drawing} alt={`Drawing ${index + 1}`} />
-              ))}
+            <div className="project-images-wrapper">
+              <p className="description-titles">Renderizações:</p>
+              <div className="images">
+                {data.desenhos.map((drawing, index) => (
+                  <img key={index} src={drawing} className="image" alt={`Drawing ${index + 1}`} onClick={() => openModal(drawing, index)} />
+                ))}
+              </div>
             </div>
-            <p className="description-titles">Modelos:</p>
-            <div className="images">
-              {data.modelos.map((model, index) => (
-                <img key={index} src={model} alt={`Model ${index + 1}`} />
-              ))}
+            <div className="project-images-wrapper">
+              <p className="description-titles">Modelos:</p>
+              <div className="images">
+                {data.modelos.map((model, index) => (
+                  <img key={index} src={model} className="image" alt={`Model ${index + 1}`} onClick={() => openModal(model, index)} />
+                ))}
+              </div>
             </div>
+          </div>
+          <div className="slider-controls">
+            <button onClick={showPreviousImage} className="slider-arrow left-arrow"/>
+            <button onClick={showNextImage} className="slider-arrow right-arrow"/>
           </div>
         </div>
       </div>
-    </body>
+      {modalImage && (
+        <div className={classNames("modal", { show: showModalImage })}>
+          <button onClick={showPreviousImage} className="modal-arrow left-arrow"/>
+          <img className="modal-content" src={modalImage} alt="Modal" />
+          <button onClick={showNextImage} className="modal-arrow right-arrow"/>
+        </div>
+      )}
+    </div>
   );
 };
 

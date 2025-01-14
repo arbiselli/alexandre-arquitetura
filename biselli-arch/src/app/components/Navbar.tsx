@@ -57,10 +57,15 @@ const Navbar: React.FC = () => {
   const [activeNestedItem] = useState<string | null>(null);
 
   useEffect(() => {
-    setTextColor("white");
-  }, []);
+    console.log(pathname);
+    if(pathname.includes("/architecture/")) {
+      setIsVisible(false)
+    }
+  }, [pathname]);
 
   useEffect(() => {
+    console.log(pathname);
+
     for (const item of navItems) {
       // Check if it's a subitem
       const matchingSubItem = item.subitems.find(
@@ -132,26 +137,26 @@ const Navbar: React.FC = () => {
 
   const textStyle = isParentActive
     ? ({
-        color: textColor,
-        // backgroundColor: "rgba(0, 0, 0, 0.1)",
-        borderRadius: "3px",
-        "--underline-color": "black",
-        "--underline-height": "3px",
-      } as React.CSSProperties)
+      color: textColor,
+      // backgroundColor: "rgba(0, 0, 0, 0.1)",
+      borderRadius: "3px",
+      "--underline-color": "black",
+      "--underline-height": "3px",
+    } as React.CSSProperties)
     : ({
-        color: textColor,
-        backgroundColor: "transparent",
-        borderRadius: "3px",
-        "--underline-color": "black",
-        "--underline-height": "3px",
-      } as React.CSSProperties);
+      color: textColor,
+      backgroundColor: "transparent",
+      borderRadius: "3px",
+      "--underline-color": "black",
+      "--underline-height": "3px",
+    } as React.CSSProperties);
 
   const handleUserActivity = useCallback(() => {
     setIsVisible(true);
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => {
       setIsVisible(false);
-    }, 103500); // 5 seconds
+    }, 5000); // 5 seconds
   }, []);
 
   useEffect(() => {
@@ -183,95 +188,92 @@ const Navbar: React.FC = () => {
     return null;
   }
 
+  // Hide navbar if pathname is exactly /architecture/
+  if (pathname.includes("/architecture/")) {
+    return null;
+  }
+
   return (
-    <nav
-      className={`${styles.navbar} ${
-        isVisible ? styles.visible : styles.hidden
-      }`}
-    >
-      <ul className={styles.navList}>
-        {navItems.map((item) => (
-          <li
-            key={item.name}
-            className={`${styles.navItem} ${
-              activeItem === item.name ? styles.active : ""
-            }`}
-          >
-            <Link
-              href={item.href}
-              onClick={() => handleItemClick(item.name, item.href)}
-              className={`${clickedItem === item.name ? styles.active : ""} ${
-                styles.parentItem
-              }`}
-              style={textStyle}
+    <div>
+      <h1 className={`${styles.logoTitle} ${isVisible ? styles.visible : styles.hidden}`}
+        onClick={(e) => {
+          e.preventDefault(); // Prevent default anchor behavior
+          router.push(`/`);
+        }}
+      >
+        biselli studio
+      </h1>
+      <nav className={`${styles.navbar} ${isVisible ? styles.visible : styles.hidden}`}>
+        <ul className={styles.navList}>
+          {navItems.map((item) => (
+            <li
+              key={item.name}
+              className={`${styles.navItem} ${activeItem === item.name ? styles.active : ""}`}
             >
-              {item.name}
-            </Link>
+              <Link
+                href={item.href}
+                onClick={() => handleItemClick(item.name, item.href)}
+                className={`${clickedItem === item.name ? styles.active : ""} ${styles.parentItem}`}
+                style={textStyle}
+              >
+                {item.name}
+              </Link>
 
-            {expandedItem === item.name && (
-              <div className={styles.subItems}>
-                {/* Render main subitems */}
-                {item.subitems.map((subitem) => (
-                  <span className="span-subitem" key={subitem.name}>
-                    <Link
-                      href={subitem.href}
-                      onClick={() =>
-                        handleSubItemClick(
-                          item.name,
-                          subitem.name,
-                          subitem.href
-                        )
-                      }
-                      className={
-                        activeSubItem === subitem.name ? styles.active : ""
-                      }
-                      style={
-                        isParentActive
-                          ? textStyle
-                          : ({
-                              color: "black",
-                              "--underline-color": "black",
-                              "--underline-height": "1px",
-                            } as React.CSSProperties)
-                      }
-                    >
-                      {subitem.name}
-                    </Link>
-                  </span>
-                ))}
+              {expandedItem === item.name && (
+                <div className={styles.subItems}>
+                  {/* Render main subitems */}
+                  {item.subitems.map((subitem) => (
+                    <span className="span-subitem" key={subitem.name}>
+                      <Link
+                        href={subitem.href}
+                        onClick={() =>
+                          handleSubItemClick(item.name, subitem.name, subitem.href)
+                        }
+                        className={activeSubItem === subitem.name ? styles.active : ""}
+                        style={
+                          isParentActive
+                            ? textStyle
+                            : ({
+                                color: "black",
+                                "--underline-color": "black",
+                                "--underline-height": "1px",
+                              } as React.CSSProperties)
+                        }
+                      >
+                        {subitem.name}
+                      </Link>
+                    </span>
+                  ))}
 
-                {/* Render nested items if their parent is active */}
-                {item.subitems.map((subitem) =>
-                  subitem.nestedItems && activeSubItem === subitem.name ? (
-                    <div
-                      key={`nested-${subitem.name}`}
-                      className={styles.nestedItems}
-                      data-parent={subitem.name}
-                    >
-                      {subitem.nestedItems.map((nestedItem) => (
-                        <Link
-                          key={nestedItem.name}
-                          href={nestedItem.href}
-                          onClick={() => handleNestedItemClick(nestedItem.name)}
-                          className={
-                            activeNestedItem === nestedItem.name
-                              ? styles.active
-                              : ""
-                          }
-                          style={{ color: "black" }}
-                        >
-                          {nestedItem.name}
-                        </Link>
-                      ))}
-                    </div>
-                  ) : null
-                )}
-              </div>
-            )}
-          </li>
-        ))}
-      </ul>
-    </nav>
+                  {/* Render nested items if their parent is active */}
+                  {item.subitems.map((subitem) =>
+                    subitem.nestedItems && activeSubItem === subitem.name ? (
+                      <div
+                        key={`nested-${subitem.name}`}
+                        className={styles.nestedItems}
+                        data-parent={subitem.name}
+                      >
+                        {subitem.nestedItems.map((nestedItem) => (
+                          <Link
+                            key={nestedItem.name}
+                            href={nestedItem.href}
+                            onClick={() => handleNestedItemClick(nestedItem.name)}
+                            className={activeNestedItem === nestedItem.name ? styles.active : ""}
+                            style={{ color: "black" }}
+                          >
+                            {nestedItem.name}
+                          </Link>
+                        ))}
+                      </div>
+                    ) : null
+                  )}
+                </div>
+              )}
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
   );
 };
 

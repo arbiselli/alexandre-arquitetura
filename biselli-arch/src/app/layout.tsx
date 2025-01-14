@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import LoadingBar from "./components/LoadingBar";
 import Navbar from "./components/Navbar";
 import { ColorProvider } from "./contexts/ColorContext";
@@ -18,7 +17,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const router = useRouter(); // Initialize useRouter
   return (
     <html lang="en">
       <ColorProvider>
@@ -26,17 +24,8 @@ export default function RootLayout({
           <LoadingBar />
           {/* <BackgroundVideo /> */}
           {/* <RouteBackground /> */}
-          <h1
-            className={styles.logoTitle}
-            onClick={(e) => {
-              e.preventDefault(); // Prevent default anchor behavior
-              router.push(`/`);
-            }}
-          >
-            biselli studio
-          </h1>
-          <Navbar />
-          <main className={styles.main}>{children}</main>
+            <Navbar />
+            <main className={styles.main}>{children}</main>
         </body>
       </ColorProvider>
     </html>

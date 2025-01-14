@@ -1,7 +1,7 @@
 [
    {
      "id": "1",
-     "imagemBase": "./architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg",
+     "imagemBase": "../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg",
      "titulo": "Corporate Tower",
      "subtitulo": "Corporate Tower",
      "localizacao": "Location 1",
@@ -16,13 +16,13 @@
      "bibliografia": "Reference 1",
      "descricao": "This new pedestrian passageway bridges the civic fissure created in Los Angeles’ downtown by the construction of the 101 Freeway some fifty years ago by filling it with an iconic civic space. And yet, the design for this icon grew out of a non-site – the very void in the urban fabric carved by the freeway. The parti responds to both the future potential and the deep-rooted history of the area. The straight edge, with its ephemeral media display, symbolically faces new Los Angeles to the South. The curved edge, with its permanent steel text, is a fragment, a reflection of the circular zócalo to the South – the original civic space of the pueblo of Los Angeles. On the North side, the frame supports an electronic display apparatus – a forum for the work of artist Jenny Holzer and a programmable catalogue of events that reflect the expansiveness of Angelino culture.",
      "sustentabilidade": "LEED Certified",
-     "imagens": ["url_to_image_1.jpg", "url_to_image_2.jpg"],
-     "desenhos": ["url_to_drawing_1.jpg"],
-     "modelos": ["url_to_model_1.jpg"]
+     "imagens": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg", "../architecture/lance-anderson-QdAAasrZhdk-unsplash.jpg"],
+     "desenhos": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"],
+     "modelos": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"]
    },
    {
      "id": "2",
-     "imagemBase": "./architecture/lance-anderson-QdAAasrZhdk-unsplash.jpg",
+     "imagemBase": "../architecture/lance-anderson-QdAAasrZhdk-unsplash.jpg",
      "titulo": "Glasses Building",
      "subtitulo": "Glasses Building",
      "localizacao": "Location 2",
@@ -37,13 +37,13 @@
      "bibliografia": "Reference 2",
      "descricao": "Building of glasses",
      "sustentabilidade": "BREEAM Certified",
-     "imagens": ["url_to_image_3.jpg", "url_to_image_4.jpg"],
-     "desenhos": ["url_to_drawing_2.jpg"],
-     "modelos": ["url_to_model_2.jpg"]
+     "imagens": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg", "../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"],
+     "desenhos": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"],
+     "modelos": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"]
    },
    {
     "id": "3",
-    "imagemBase": "./architecture/lance-anderson-QdAAasrZhdk-unsplash.jpg",
+    "imagemBase": "../architecture/lance-anderson-QdAAasrZhdk-unsplash.jpg",
     "titulo": "Riyadh US Embassy",
     "subtitulo": "A new US embassy campus responds to the forms and climate of the Riyadh landscape",
     "localizacao": "Riyadh, Saudi Arabia",
@@ -58,13 +58,13 @@
     "bibliografia": "Reference 2",
     "descricao": "Today, Saudi Arabia is preparing for a sustainable, prosperous future, with transformation across broad sectors from infrastructure, education, and technology to tourism, sports, and entertainment under the country’s Vision 2030 initiative. Catalyzed by this momentum, the United States and Saudi Arabia are expanding upon eight decades of partnership to drive research and development that will enhance sustainability in the Kingdom and around the world in the decades ahead. ",
     "sustentabilidade": "BREEAM Certified",
-    "imagens": ["url_to_image_3.jpg", "url_to_image_4.jpg"],
-    "desenhos": ["url_to_drawing_2.jpg"],
-    "modelos": ["url_to_model_2.jpg"]
+    "imagens": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg", "../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"],
+    "desenhos": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"],
+    "modelos": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"]
   },
    {
      "id": "4",
-     "imagemBase": "./architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg",
+     "imagemBase": "../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg",
      "titulo": "Corporate Tower",
      "subtitulo": "Corporate Tower",
      "localizacao": "Location 1",
@@ -85,7 +85,7 @@
    },
    {
      "id": "5",
-     "imagemBase": "./architecture/lance-anderson-QdAAasrZhdk-unsplash.jpg",
+     "imagemBase": "../architecture/lance-anderson-QdAAasrZhdk-unsplash.jpg",
      "titulo": "Glasses Building",
      "subtitulo": "Glasses Building",
      "localizacao": "Location 2",
@@ -100,13 +100,13 @@
      "bibliografia": "Reference 2",
      "descricao": "Building of glasses",
      "sustentabilidade": "BREEAM Certified",
-     "imagens": ["url_to_image_3.jpg", "url_to_image_4.jpg"],
-     "desenhos": ["url_to_drawing_2.jpg"],
-     "modelos": ["url_to_model_2.jpg"]
+     "imagens": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg", "../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"],
+     "desenhos": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"],
+     "modelos": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"]
    },
    {
     "id": "6",
-    "imagemBase": "./architecture/lance-anderson-QdAAasrZhdk-unsplash.jpg",
+    "imagemBase": "../architecture/lance-anderson-QdAAasrZhdk-unsplash.jpg",
     "titulo": "Riyadh US Embassy",
     "subtitulo": "A new US embassy campus responds to the forms and climate of the Riyadh landscape",
     "localizacao": "Riyadh, Saudi Arabia",
@@ -121,13 +121,13 @@
     "bibliografia": "Reference 2",
     "descricao": "Today, Saudi Arabia is preparing for a sustainable, prosperous future, with transformation across broad sectors from infrastructure, education, and technology to tourism, sports, and entertainment under the country’s Vision 2030 initiative. Catalyzed by this momentum, the United States and Saudi Arabia are expanding upon eight decades of partnership to drive research and development that will enhance sustainability in the Kingdom and around the world in the decades ahead. ",
     "sustentabilidade": "BREEAM Certified",
-    "imagens": ["url_to_image_3.jpg", "url_to_image_4.jpg"],
-    "desenhos": ["url_to_drawing_2.jpg"],
-    "modelos": ["url_to_model_2.jpg"]
+    "imagens": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg", "../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"],
+    "desenhos": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"],
+    "modelos": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"]
   },
    {
     "id": "7",
-    "imagemBase": "./architecture/lance-anderson-QdAAasrZhdk-unsplash.jpg",
+    "imagemBase": "../architecture/lance-anderson-QdAAasrZhdk-unsplash.jpg",
     "titulo": "Riyadh US Embassy",
     "subtitulo": "A new US embassy campus responds to the forms and climate of the Riyadh landscape",
     "localizacao": "Riyadh, Saudi Arabia",
@@ -142,13 +142,13 @@
     "bibliografia": "Reference 2",
     "descricao": "Today, Saudi Arabia is preparing for a sustainable, prosperous future, with transformation across broad sectors from infrastructure, education, and technology to tourism, sports, and entertainment under the country’s Vision 2030 initiative. Catalyzed by this momentum, the United States and Saudi Arabia are expanding upon eight decades of partnership to drive research and development that will enhance sustainability in the Kingdom and around the world in the decades ahead. ",
     "sustentabilidade": "BREEAM Certified",
-    "imagens": ["url_to_image_3.jpg", "url_to_image_4.jpg"],
-    "desenhos": ["url_to_drawing_2.jpg"],
-    "modelos": ["url_to_model_2.jpg"]
+    "imagens": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg", "../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"],
+    "desenhos": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"],
+    "modelos": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"]
   },
    {
     "id": "8",
-    "imagemBase": "./architecture/lance-anderson-QdAAasrZhdk-unsplash.jpg",
+    "imagemBase": "../architecture/lance-anderson-QdAAasrZhdk-unsplash.jpg",
     "titulo": "Riyadh US Embassy",
     "subtitulo": "A new US embassy campus responds to the forms and climate of the Riyadh landscape",
     "localizacao": "Riyadh, Saudi Arabia",
@@ -163,13 +163,13 @@
     "bibliografia": "Reference 2",
     "descricao": "Today, Saudi Arabia is preparing for a sustainable, prosperous future, with transformation across broad sectors from infrastructure, education, and technology to tourism, sports, and entertainment under the country’s Vision 2030 initiative. Catalyzed by this momentum, the United States and Saudi Arabia are expanding upon eight decades of partnership to drive research and development that will enhance sustainability in the Kingdom and around the world in the decades ahead. ",
     "sustentabilidade": "BREEAM Certified",
-    "imagens": ["url_to_image_3.jpg", "url_to_image_4.jpg"],
-    "desenhos": ["url_to_drawing_2.jpg"],
-    "modelos": ["url_to_model_2.jpg"]
+    "imagens": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg", "../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"],
+    "desenhos": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"],
+    "modelos": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"]
   },
   {
     "id": "9",
-    "imagemBase": "./architecture/lance-anderson-QdAAasrZhdk-unsplash.jpg",
+    "imagemBase": "../architecture/lance-anderson-QdAAasrZhdk-unsplash.jpg",
     "titulo": "Riyadh US Embassy",
     "subtitulo": "A new US embassy campus responds to the forms and climate of the Riyadh landscape",
     "localizacao": "Riyadh, Saudi Arabia",
@@ -184,13 +184,13 @@
     "bibliografia": "Reference 2",
     "descricao": "Today, Saudi Arabia is preparing for a sustainable, prosperous future, with transformation across broad sectors from infrastructure, education, and technology to tourism, sports, and entertainment under the country’s Vision 2030 initiative. Catalyzed by this momentum, the United States and Saudi Arabia are expanding upon eight decades of partnership to drive research and development that will enhance sustainability in the Kingdom and around the world in the decades ahead. ",
     "sustentabilidade": "BREEAM Certified",
-    "imagens": ["url_to_image_3.jpg", "url_to_image_4.jpg"],
-    "desenhos": ["url_to_drawing_2.jpg"],
-    "modelos": ["url_to_model_2.jpg"]
+    "imagens": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg", "../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"],
+    "desenhos": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"],
+    "modelos": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"]
   },
   {
     "id": "10",
-    "imagemBase": "./architecture/lance-anderson-QdAAasrZhdk-unsplash.jpg",
+    "imagemBase": "../architecture/lance-anderson-QdAAasrZhdk-unsplash.jpg",
     "titulo": "Riyadh US Embassy",
     "subtitulo": "A new US embassy campus responds to the forms and climate of the Riyadh landscape",
     "localizacao": "Riyadh, Saudi Arabia",
@@ -205,13 +205,13 @@
     "bibliografia": "Reference 2",
     "descricao": "Today, Saudi Arabia is preparing for a sustainable, prosperous future, with transformation across broad sectors from infrastructure, education, and technology to tourism, sports, and entertainment under the country’s Vision 2030 initiative. Catalyzed by this momentum, the United States and Saudi Arabia are expanding upon eight decades of partnership to drive research and development that will enhance sustainability in the Kingdom and around the world in the decades ahead. ",
     "sustentabilidade": "BREEAM Certified",
-    "imagens": ["url_to_image_3.jpg", "url_to_image_4.jpg"],
-    "desenhos": ["url_to_drawing_2.jpg"],
-    "modelos": ["url_to_model_2.jpg"]
+    "imagens": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg", "../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"],
+    "desenhos": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"],
+    "modelos": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"]
   },
   {
     "id": "11",
-    "imagemBase": "./architecture/lance-anderson-QdAAasrZhdk-unsplash.jpg",
+    "imagemBase": "../architecture/lance-anderson-QdAAasrZhdk-unsplash.jpg",
     "titulo": "Riyadh US Embassy",
     "subtitulo": "A new US embassy campus responds to the forms and climate of the Riyadh landscape",
     "localizacao": "Riyadh, Saudi Arabia",
@@ -226,13 +226,13 @@
     "bibliografia": "Reference 2",
     "descricao": "Today, Saudi Arabia is preparing for a sustainable, prosperous future, with transformation across broad sectors from infrastructure, education, and technology to tourism, sports, and entertainment under the country’s Vision 2030 initiative. Catalyzed by this momentum, the United States and Saudi Arabia are expanding upon eight decades of partnership to drive research and development that will enhance sustainability in the Kingdom and around the world in the decades ahead. ",
     "sustentabilidade": "BREEAM Certified",
-    "imagens": ["url_to_image_3.jpg", "url_to_image_4.jpg"],
-    "desenhos": ["url_to_drawing_2.jpg"],
-    "modelos": ["url_to_model_2.jpg"]
+    "imagens": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg", "../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"],
+    "desenhos": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"],
+    "modelos": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"]
   },
   {
     "id": "12",
-    "imagemBase": "./architecture/lance-anderson-QdAAasrZhdk-unsplash.jpg",
+    "imagemBase": "../architecture/lance-anderson-QdAAasrZhdk-unsplash.jpg",
     "titulo": "Riyadh US Embassy",
     "subtitulo": "A new US embassy campus responds to the forms and climate of the Riyadh landscape",
     "localizacao": "Riyadh, Saudi Arabia",
@@ -247,13 +247,13 @@
     "bibliografia": "Reference 2",
     "descricao": "Today, Saudi Arabia is preparing for a sustainable, prosperous future, with transformation across broad sectors from infrastructure, education, and technology to tourism, sports, and entertainment under the country’s Vision 2030 initiative. Catalyzed by this momentum, the United States and Saudi Arabia are expanding upon eight decades of partnership to drive research and development that will enhance sustainability in the Kingdom and around the world in the decades ahead. ",
     "sustentabilidade": "BREEAM Certified",
-    "imagens": ["url_to_image_3.jpg", "url_to_image_4.jpg"],
-    "desenhos": ["url_to_drawing_2.jpg"],
-    "modelos": ["url_to_model_2.jpg"]
+    "imagens": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg", "../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"],
+    "desenhos": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"],
+    "modelos": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"]
   },
   {
     "id": "13",
-    "imagemBase": "./architecture/lance-anderson-QdAAasrZhdk-unsplash.jpg",
+    "imagemBase": "../architecture/lance-anderson-QdAAasrZhdk-unsplash.jpg",
     "titulo": "Riyadh US Embassy",
     "subtitulo": "A new US embassy campus responds to the forms and climate of the Riyadh landscape",
     "localizacao": "Riyadh, Saudi Arabia",
@@ -268,13 +268,13 @@
     "bibliografia": "Reference 2",
     "descricao": "Today, Saudi Arabia is preparing for a sustainable, prosperous future, with transformation across broad sectors from infrastructure, education, and technology to tourism, sports, and entertainment under the country’s Vision 2030 initiative. Catalyzed by this momentum, the United States and Saudi Arabia are expanding upon eight decades of partnership to drive research and development that will enhance sustainability in the Kingdom and around the world in the decades ahead. ",
     "sustentabilidade": "BREEAM Certified",
-    "imagens": ["url_to_image_3.jpg", "url_to_image_4.jpg"],
-    "desenhos": ["url_to_drawing_2.jpg"],
-    "modelos": ["url_to_model_2.jpg"]
+    "imagens": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg", "../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"],
+    "desenhos": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"],
+    "modelos": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"]
   },
   {
     "id": "14",
-    "imagemBase": "./architecture/lance-anderson-QdAAasrZhdk-unsplash.jpg",
+    "imagemBase": "../architecture/lance-anderson-QdAAasrZhdk-unsplash.jpg",
     "titulo": "Riyadh US Embassy",
     "subtitulo": "A new US embassy campus responds to the forms and climate of the Riyadh landscape",
     "localizacao": "Riyadh, Saudi Arabia",
@@ -289,13 +289,13 @@
     "bibliografia": "Reference 2",
     "descricao": "Today, Saudi Arabia is preparing for a sustainable, prosperous future, with transformation across broad sectors from infrastructure, education, and technology to tourism, sports, and entertainment under the country’s Vision 2030 initiative. Catalyzed by this momentum, the United States and Saudi Arabia are expanding upon eight decades of partnership to drive research and development that will enhance sustainability in the Kingdom and around the world in the decades ahead. ",
     "sustentabilidade": "BREEAM Certified",
-    "imagens": ["url_to_image_3.jpg", "url_to_image_4.jpg"],
-    "desenhos": ["url_to_drawing_2.jpg"],
-    "modelos": ["url_to_model_2.jpg"]
+    "imagens": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg", "../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"],
+    "desenhos": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"],
+    "modelos": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"]
   },
   {
     "id": "15",
-    "imagemBase": "./architecture/lance-anderson-QdAAasrZhdk-unsplash.jpg",
+    "imagemBase": "../architecture/lance-anderson-QdAAasrZhdk-unsplash.jpg",
     "titulo": "Riyadh US Embassy",
     "subtitulo": "A new US embassy campus responds to the forms and climate of the Riyadh landscape",
     "localizacao": "Riyadh, Saudi Arabia",
@@ -310,8 +310,8 @@
     "bibliografia": "Reference 2",
     "descricao": "Today, Saudi Arabia is preparing for a sustainable, prosperous future, with transformation across broad sectors from infrastructure, education, and technology to tourism, sports, and entertainment under the country’s Vision 2030 initiative. Catalyzed by this momentum, the United States and Saudi Arabia are expanding upon eight decades of partnership to drive research and development that will enhance sustainability in the Kingdom and around the world in the decades ahead. ",
     "sustentabilidade": "BREEAM Certified",
-    "imagens": ["url_to_image_3.jpg", "url_to_image_4.jpg"],
-    "desenhos": ["url_to_drawing_2.jpg"],
-    "modelos": ["url_to_model_2.jpg"]
+    "imagens": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg", "../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"],
+    "desenhos": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"],
+    "modelos": ["../architecture/jimmy-chang-ACt8ycSzpdE-unsplash.jpg"]
   }
  ]

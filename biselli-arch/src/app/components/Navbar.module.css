@@ -21,6 +21,16 @@
    position: relative;
  }
  
+ .logoTitle {
+  font-size: 3.5rem;
+  margin-left: 40px;
+  font-family: 'HelveticaNeueBold', sans-serif;
+  font-weight: 800;
+  margin-top: 20px;
+  cursor: pointer;
+  max-width: 400px;
+}
+
  .navItem > a,
  .subItems a {
    text-decoration: none;
@@ -93,11 +103,13 @@
  .visible {
    opacity: 1;
    pointer-events: auto;
+   transition: opacity 0.5s ease-in-out; /* Add transition */
  }
  
  .hidden {
    opacity: 0;
    pointer-events: none;
+   transition: opacity 0.5s ease-in-out; /* Add transition */
  }
  
  .nestedItems {
