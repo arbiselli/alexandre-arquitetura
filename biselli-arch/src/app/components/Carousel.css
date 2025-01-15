@@ -1,10 +1,5 @@
 .carousel {
-  text-align: center;
-  width: 100%;
-  max-width: 1400px; /* Set a maximum width for the carousel */
-  max-height: 700px;
-  justify-items: center;
-  margin-left: 50px;
+align-self: center;
 }
 
 
@@ -49,6 +44,13 @@
 
 .dot.active {
   background-color: white; /* Change color for active dot */
+}
+
+.carousel-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
 .carousel-title{

@@ -32,32 +32,34 @@ const Carousel: React.FC<CarouselProps> = ({ data }) => {
   }
 
   return (
-    <div className="carousel">
-      <div className="carousel-slide">
-        <img
-          src={data[currentIndex].imagemBase}
-          alt={data[currentIndex].titulo}
-          className="carousel-image" // Add a class for styling
-        />
-        <div className="bottom-carousel-slide">
-          <p className="carousel-title">
-            <a
-              onClick={(e) => {
-                e.preventDefault(); // Prevent default anchor behavior
-                router.push(`/architecture/${data[currentIndex].id}`); // Navigate to the new URL
-              }}
-            >
-              {data[currentIndex].titulo}
-            </a>
-          </p>
-          <div className="carousel-dots">
-            {data.map((_, index) => (
-              <span
-                key={index}
-                className={`dot ${index === currentIndex ? "active" : ""}`}
-                onClick={() => setCurrentIndex(index)} // Allow clicking on dots to change slide
-              />
-            ))}
+    <div className="carousel-container">
+      <div className="carousel">
+        <div className="carousel-slide">
+          <img
+            src={data[currentIndex].imagemBase}
+            alt={data[currentIndex].titulo}
+            className="carousel-image" // Add a class for styling
+          />
+          <div className="bottom-carousel-slide">
+            <p className="carousel-title">
+              <a
+                onClick={(e) => {
+                  e.preventDefault(); // Prevent default anchor behavior
+                  router.push(`/architecture/${data[currentIndex].id}`); // Navigate to the new URL
+                }}
+              >
+                {data[currentIndex].titulo}
+              </a>
+            </p>
+            <div className="carousel-dots">
+              {data.map((_, index) => (
+                <span
+                  key={index}
+                  className={`dot ${index === currentIndex ? "active" : ""}`}
+                  onClick={() => setCurrentIndex(index)} // Allow clicking on dots to change slide
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>

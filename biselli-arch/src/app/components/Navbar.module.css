@@ -9,7 +9,6 @@
   color: inherit;
   opacity: 1;
 }
-
  
  .navList {
    list-style-type: none;
@@ -20,7 +19,10 @@
  .navItem {
    position: relative;
  }
- 
+ .navbarContainer {
+  width: 30%;
+}
+
  .logoTitle {
   font-size: 3.5rem;
   margin-left: 40px;
@@ -28,7 +30,6 @@
   font-weight: 800;
   margin-top: 20px;
   cursor: pointer;
-  max-width: 400px;
 }
 
  .navItem > a,

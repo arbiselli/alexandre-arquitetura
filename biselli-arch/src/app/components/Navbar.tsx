@@ -194,7 +194,7 @@ const Navbar: React.FC = () => {
   }
 
   return (
-    <div>
+    <div className={styles.navbarContainer}>
       <h1 className={`${styles.logoTitle} ${isVisible ? styles.visible : styles.hidden}`}
         onClick={(e) => {
           e.preventDefault(); // Prevent default anchor behavior

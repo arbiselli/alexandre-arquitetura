@@ -60,9 +60,7 @@ export default function ArchitecturePage() {
           </div>
         </div>
       ) : (
-        <div>
           <Carousel data={filteredData} onTitleClick={() => { }} />
-        </div>
       )}
     </div>
   );
