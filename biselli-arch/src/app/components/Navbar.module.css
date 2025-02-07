@@ -1,3 +1,4 @@
+
 .navbar {
   position: absolute;
   top: 200px;
@@ -5,7 +6,7 @@
   padding: 20px;
   z-index: 100; /* Valor menor que o modal */
   font-size: 3.5rem;
-  font-family: 'HelveticaNeueLight', sans-serif;
+  font-family: 'HelveticaNeueLight';
   color: inherit;
   opacity: 1;
 }
@@ -27,10 +28,10 @@
  .logoTitle {
   font-size: 3.5rem;
   margin-left: 40px;
-  font-family: 'HelveticaNeueBold', sans-serif;
   font-weight: 800;
   margin-top: 20px;
   cursor: pointer;
+  font-family: 'ClementePDaq-UltraBold';
 }
 
  .navItem > a,

@@ -139,7 +139,7 @@ const Navbar: React.FC = () => {
       // backgroundColor: "rgba(0, 0, 0, 0.1)",
       borderRadius: "3px",
       "--underline-color": "black",
-      "--underline-height": "3px",
+      "--underline-height": "3px"
     } as React.CSSProperties)
     : ({
       color: textColor,
