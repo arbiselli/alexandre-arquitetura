@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ArchitectureData } from "../architecture/architectureData";
@@ -9,7 +10,7 @@ import LoadingBar from "../components/LoadingBar";
 export default function ArchitecturePage() {
   const [filteredData, setFilteredData] = useState<ArchitectureData[]>([]);
   const searchParams = useSearchParams();
-
+  const router = useRouter(); // Initialize useRouter
   const fetchData = async () => {
     try {
       const response = await fetch("/architectureData.json");
@@ -51,7 +52,12 @@ export default function ArchitecturePage() {
                     alt={item.titulo}
                     className="card-image"
                   />
-                  <h2>{item.titulo}</h2>
+                  <h2
+                    onClick={() => router.push(`/architecture/${item.id}`)}
+                    className="card-title" // Add CSS class
+                  >
+                    {item.titulo}
+                  </h2>
                 </div>
               ))
             ) : (
@@ -60,7 +66,7 @@ export default function ArchitecturePage() {
           </div>
         </div>
       ) : (
-          <Carousel data={filteredData} onTitleClick={() => { }} />
+        <Carousel data={filteredData} onTitleClick={() => { }} />
       )}
     </div>
   );

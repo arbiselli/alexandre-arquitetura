@@ -1,3 +1,8 @@
+/* Remove focus outline for all elements */
+.container * {
+  outline: none;
+}
+
 .container {
    min-height: 100vh;
    padding: 0 0.5rem;

@@ -57,14 +57,12 @@ const Navbar: React.FC = () => {
   const [activeNestedItem] = useState<string | null>(null);
 
   useEffect(() => {
-    console.log(pathname);
     if(pathname.includes("/architecture/")) {
       setIsVisible(false)
     }
   }, [pathname]);
 
   useEffect(() => {
-    console.log(pathname);
 
     for (const item of navItems) {
       // Check if it's a subitem
@@ -156,7 +154,7 @@ const Navbar: React.FC = () => {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => {
       setIsVisible(false);
-    }, 5000); // 5 seconds
+    }, 500000); // 5 seconds
   }, []);
 
   useEffect(() => {

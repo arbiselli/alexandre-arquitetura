@@ -2,6 +2,7 @@ export default function Contact() {
   return (
     <div
       style={{
+        marginTop: "180px",
         marginLeft: "25%",
         marginRight: "10%",
         color: "black",

@@ -35,7 +35,7 @@ align-self: center;
 .dot {
   height: 12px;
   width: 12px;
-  margin: 0 1px;
+  margin: 0 1px 2px 2px;
   background-color: #bcc0c7;
   border-radius: 50%;
   display: inline-block;
